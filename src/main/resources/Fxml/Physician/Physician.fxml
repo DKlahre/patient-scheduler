@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <Text fx:id="physician_parent" strokeType="OUTSIDE" strokeWidth="0.0" text="Dummy page" AnchorPane.leftAnchor="200.0"
+         AnchorPane.topAnchor="14.0"/>
+</AnchorPane>
