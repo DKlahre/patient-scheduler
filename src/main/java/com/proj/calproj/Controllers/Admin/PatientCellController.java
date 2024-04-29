@@ -50,7 +50,7 @@ public class PatientCellController implements Initializable {
                 Model.getInstance().getDatabaseDriver().deletePatient(username);
                 Model.getInstance().setPatientsToNull();
                 Model.getInstance().setPatients();
-                Model.getInstance().getViewFactory().showAdminWindow();
+                Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.PATIENTS);
 
             }
         } catch (Exception e) {
