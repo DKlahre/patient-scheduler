@@ -2,10 +2,7 @@ package com.proj.calproj.Controllers.Admin;
 
 import com.proj.calproj.Models.Model;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -24,6 +21,7 @@ public class CreatePatientController implements Initializable {
     public Label error_lbl;
     public CheckBox username_box;
     public Label username_lbl;
+    public TextArea notes_ta;
     private String username;
     private boolean createPatientFlag = false;
 
@@ -59,7 +57,8 @@ public class CreatePatientController implements Initializable {
         String gender = gender_fld.getText();
         String birthDate = birth_date_fld.getText();
         String  address = address_fld.getText();
-        Model.getInstance().getDatabaseDriver().createPatient(fName, lName, username, password, gender, birthDate, LocalDate.now(), address);
+        String notes = notes_ta.getText();
+        Model.getInstance().getDatabaseDriver().createPatient(fName, lName, username, password, gender, birthDate, LocalDate.now(), address, notes);
 
         error_lbl.setStyle("-fx-text-fill: blue; -fx-font-size: 1.3em; -fx-font-weight: bold");
         error_lbl.setText("Patient Created Successfully");

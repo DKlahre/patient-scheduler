@@ -11,49 +11,47 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="create_patient_container" stylesheets="@../../Styles/CreatePatient.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj.calproj.Controllers.Admin.CreatePatientController">
-   <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Create New Patient" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
-      <VBox prefHeight="700.0" prefWidth="600.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="40.0">
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
-         <TextField fx:id="fName_fld" />
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
-         <TextField fx:id="lName_fld" />
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" />
-         <TextField fx:id="gender_fld" />
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Birth Date:" />
-         <TextField fx:id="birth_date_fld" />
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" />
-         <TextField fx:id="address_fld" />
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
-         <TextField fx:id="password_fld" />
-         <HBox prefHeight="100.0" prefWidth="200.0">
-            <children>
-               <VBox prefHeight="76.0" prefWidth="231.0">
-                  <children>
-                     <HBox prefHeight="100.0" prefWidth="200.0">
-                        <children>
-                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="94.27107238769531" />
-                           <CheckBox fx:id="username_box" mnemonicParsing="false" />
-                        </children>
-                     </HBox>
-                     <Label fx:id="username_lbl" prefHeight="33.0" prefWidth="131.0" styleClass="patient_username_lbl" />
-                  </children>
-               </VBox>
-               <VBox prefHeight="124.0" prefWidth="350.0">
-                  <children>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notes:" />
-                     <TextArea prefHeight="50.0" prefWidth="328.0" />
-                  </children>
-               </VBox>
-            </children>
-         </HBox>
-         <HBox alignment="CENTER" prefHeight="81.0" prefWidth="578.0">
-            <children>
-               <Button fx:id="create_patient_btn" alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="220.0" text="Create New Patient" />
-               <Label prefHeight="18.0" prefWidth="15.0" />
-               <Label fx:id="error_lbl" styleClass="error_lbl" />
-            </children>
-         </HBox>
-      </VBox>
-   </children>
+   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Create New Patient" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+   <VBox prefHeight="700.0" prefWidth="600.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="40.0">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
+      <TextField fx:id="fName_fld" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
+      <TextField fx:id="lName_fld" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" />
+      <TextField fx:id="gender_fld" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Birth Date:" />
+      <TextField fx:id="birth_date_fld" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" />
+      <TextField fx:id="address_fld" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+      <TextField fx:id="password_fld" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="76.0" prefWidth="231.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="94.27107238769531" />
+                        <CheckBox fx:id="username_box" mnemonicParsing="false" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="username_lbl" prefHeight="33.0" prefWidth="131.0" styleClass="patient_username_lbl" />
+               </children>
+            </VBox>
+            <VBox prefHeight="124.0" prefWidth="350.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notes:" />
+                  <TextArea fx:id="notes_ta" prefHeight="50.0" prefWidth="328.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="81.0" prefWidth="578.0">
+         <children>
+            <Button fx:id="create_patient_btn" alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="220.0" text="Create New Patient" />
+            <Label prefHeight="18.0" prefWidth="15.0" />
+            <Label fx:id="error_lbl" styleClass="error_lbl" />
+         </children>
+      </HBox>
+   </VBox>
 </AnchorPane>
