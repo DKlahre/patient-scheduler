@@ -2,9 +2,11 @@ package com.proj.calproj.Controllers.Admin;
 
 import com.proj.calproj.Models.Model;
 import com.proj.calproj.Models.Patient;
+import com.proj.calproj.Views.PatientCellFactory;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -17,6 +19,9 @@ public class SearchPatientController implements Initializable {
     public Button usernameSearch_btn;
     public Button lastNameSearch_btn;
     public Button birthDateSearch_btn;
+    public ListView<Patient> patient_listview;
+
+    private Patient patient;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -27,6 +32,9 @@ public class SearchPatientController implements Initializable {
 
     private void onUserNameSearch() {
         ObservableList<Patient> searchResults = Model.getInstance().searchPatUsername(username_fld.getText());
+        patient_listview.setItems(searchResults);
+        patient_listview.setCellFactory(e -> new PatientCellFactory());
+        patient = searchResults.get(0);
     }
 
     private void onLastNameSearch() {

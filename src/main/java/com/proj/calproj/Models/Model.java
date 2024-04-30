@@ -109,8 +109,12 @@ public class Model {
             String password = resultSet.getString("Password");
             String gender = resultSet.getString("Gender");
             String[] birthDateParts = resultSet.getString("BirthDate").split("-");
+            LocalDate patBirthDate = LocalDate.of(Integer.parseInt(birthDateParts[0]), Integer.parseInt(birthDateParts[1]), Integer.parseInt(birthDateParts[0]));
             String[] registerDateParts = resultSet.getString("RegisterDate").split("-");
-            String address = resultSet.getString("Address");
+            LocalDate patRegisterDate = LocalDate.of(Integer.parseInt(registerDateParts[0]), Integer.parseInt(registerDateParts[1]), Integer.parseInt(registerDateParts[0]));
+            String patAddress = resultSet.getString("Address");
+            String patNotes = resultSet.getString("Notes");
+            searchResults.add(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes));
         } catch (Exception e) {
             e.printStackTrace();
        }
