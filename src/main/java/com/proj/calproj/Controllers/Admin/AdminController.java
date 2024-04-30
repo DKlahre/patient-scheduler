@@ -22,7 +22,4 @@ public class AdminController implements Initializable {
         } );
     }
 
-    public void deletedRefresh() {
-        admin_parent.setCenter(Model.getInstance().getViewFactory().getPatientsView());
-    }
 }

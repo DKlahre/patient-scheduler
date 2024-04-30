@@ -48,10 +48,9 @@ public class PatientCellController implements Initializable {
             System.out.println("username " + username);
             if (resultSet.isBeforeFirst()) {
                 Model.getInstance().getDatabaseDriver().deletePatient(username);
-                Model.getInstance().setPatientsToNull();
+                Model.getInstance().clearPatientsList();
                 Model.getInstance().setPatients();
                 Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.PATIENTS);
-
             }
         } catch (Exception e) {
             e.printStackTrace();

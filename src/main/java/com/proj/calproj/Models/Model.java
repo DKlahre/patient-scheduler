@@ -75,26 +75,11 @@ public class Model {
         }
    }
 
-   public void setPatientsToNull(){
+   public void clearPatientsList(){
        ResultSet resultSet = null;
-
-        //   model = new Model();
 
        try {
            patients.clear();
-//           String fName = null;
-//           String lName = null;
-//           String username = null;
-//           String password = null;
-//           String gender = null;
-//           String[] birthDateParts = null;
-//           LocalDate birthDate = null;
-//           String[] registerDateParts = null;
-//           LocalDate registerDate = null;
-//           String address = null;
-//           String notes = null;
-
-         //  patients.add(new Patient(fName, lName, username, password, gender, birthDate, registerDate, address, notes));
        } catch (Exception e) {
            e.printStackTrace();
        }
