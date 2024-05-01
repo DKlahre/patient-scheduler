@@ -101,7 +101,7 @@ public class Model {
    }
 
    public ObservableList<Patient> searchPatUsername(String username) {
-        ObservableList<Patient> searchResults = FXCollections.observableArrayList();
+        ObservableList<Patient> searchResult = FXCollections.observableArrayList();
         ResultSet resultSet = databaseDriver.searchPatUsername(username);
         try {
             String fName = resultSet.getString("FirstName");
@@ -109,16 +109,16 @@ public class Model {
             String password = resultSet.getString("Password");
             String gender = resultSet.getString("Gender");
             String[] birthDateParts = resultSet.getString("BirthDate").split("-");
-            LocalDate patBirthDate = LocalDate.of(Integer.parseInt(birthDateParts[0]), Integer.parseInt(birthDateParts[1]), Integer.parseInt(birthDateParts[0]));
+            LocalDate patBirthDate = LocalDate.of(Integer.parseInt(birthDateParts[0]), Integer.parseInt(birthDateParts[1]), Integer.parseInt(birthDateParts[2]));
             String[] registerDateParts = resultSet.getString("RegisterDate").split("-");
-            LocalDate patRegisterDate = LocalDate.of(Integer.parseInt(registerDateParts[0]), Integer.parseInt(registerDateParts[1]), Integer.parseInt(registerDateParts[0]));
+            LocalDate patRegisterDate = LocalDate.of(Integer.parseInt(registerDateParts[0]), Integer.parseInt(registerDateParts[1]), Integer.parseInt(registerDateParts[2]));
             String patAddress = resultSet.getString("Address");
             String patNotes = resultSet.getString("Notes");
-            searchResults.add(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes));
+            searchResult.add(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes));
         } catch (Exception e) {
             e.printStackTrace();
        }
-       return searchResults;
+       return searchResult;
    }
 
    public ObservableList<Patient> searchPatLastName(String lastName) {
@@ -130,8 +130,12 @@ public class Model {
             String password = resultSet.getString("Password");
             String gender = resultSet.getString("Gender");
             String[] birthDateParts = resultSet.getString("BirthDate").split("-");
+            LocalDate patBirthDate = LocalDate.of(Integer.parseInt(birthDateParts[0]), Integer.parseInt(birthDateParts[1]), Integer.parseInt(birthDateParts[2]));
             String[] registerDateParts = resultSet.getString("RegisterDate").split("-");
-            String address = resultSet.getString("Address");
+            LocalDate patRegisterDate = LocalDate.of(Integer.parseInt(registerDateParts[0]), Integer.parseInt(registerDateParts[1]), Integer.parseInt(registerDateParts[2]));
+            String patAddress = resultSet.getString("Address");
+            String patNotes = resultSet.getString("Notes");
+            searchResult.add(new Patient(fName, lastName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -148,8 +152,12 @@ public class Model {
             String password = resultSet.getString("Password");
             String gender = resultSet.getString("Gender");
             String[] birthDateParts = resultSet.getString("BirthDate").split("-");
+            LocalDate patBirthDate = LocalDate.of(Integer.parseInt(birthDateParts[0]), Integer.parseInt(birthDateParts[1]), Integer.parseInt(birthDateParts[2]));
             String[] registerDateParts = resultSet.getString("RegisterDate").split("-");
-            String address = resultSet.getString("Address");
+            LocalDate patRegisterDate = LocalDate.of(Integer.parseInt(registerDateParts[0]), Integer.parseInt(registerDateParts[1]), Integer.parseInt(registerDateParts[2]));
+            String patAddress = resultSet.getString("Address");
+            String patNotes = resultSet.getString("Notes");
+            searchResult.add(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes));
         } catch (Exception e) {
             e.printStackTrace();
         }

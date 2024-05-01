@@ -21,7 +21,7 @@
    <VBox prefHeight="60.0" prefWidth="820.0" styleClass="search_container" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="100.0">
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="search_box">
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search by username:" textAlignment="CENTER" />
-         <TextField fx:id="username_fld" alignment="CENTER" />
+         <TextField fx:id="username_fld" />
          <Button fx:id="usernameSearch_btn" mnemonicParsing="false" prefHeight="35.0" prefWidth="184.0" text="Search">
             <graphic>
                <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="20" />

@@ -39,9 +39,15 @@ public class SearchPatientController implements Initializable {
 
     private void onLastNameSearch() {
         ObservableList<Patient> searchResults = Model.getInstance().searchPatLastName(lastName_fld.getText());
+        patient_listview.setItems(searchResults);
+        patient_listview.setCellFactory(e -> new PatientCellFactory());
+        patient = searchResults.get(0);
     }
 
     private void onBirthDateSearch() {
         ObservableList<Patient> searchResults = Model.getInstance().searchPatBirthDate(birthDate_fld.getText());
+        patient_listview.setItems(searchResults);
+        patient_listview.setCellFactory(e -> new PatientCellFactory());
+        patient = searchResults.get(0);
     }
 }
