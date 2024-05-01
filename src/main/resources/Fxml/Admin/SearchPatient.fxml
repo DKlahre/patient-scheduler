@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -43,7 +44,7 @@
    <VBox prefHeight="60.0" prefWidth="820.0" styleClass="search_container" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="285.0">
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="search_box">
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search by birth date:" />
-         <TextField fx:id="birthDate_fld" />
+         <DatePicker fx:id="birthDate_pkr" prefHeight="26.0" prefWidth="211.0" />
          <Button fx:id="birthDateSearch_btn" mnemonicParsing="false" text="Search">
             <graphic>
                <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="20" />

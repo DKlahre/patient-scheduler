@@ -6,10 +6,13 @@ import com.proj.calproj.Views.PatientCellFactory;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class SearchPatientController implements Initializable {
@@ -20,6 +23,7 @@ public class SearchPatientController implements Initializable {
     public Button lastNameSearch_btn;
     public Button birthDateSearch_btn;
     public ListView<Patient> patient_listview;
+    public DatePicker birthDate_pkr;
 
     private Patient patient;
 
@@ -45,7 +49,9 @@ public class SearchPatientController implements Initializable {
     }
 
     private void onBirthDateSearch() {
-        ObservableList<Patient> searchResults = Model.getInstance().searchPatBirthDate(birthDate_fld.getText());
+        LocalDate myDate = birthDate_pkr.getValue();
+        String myFormattedDate = myDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        ObservableList<Patient> searchResults = Model.getInstance().searchPatBirthDate(myFormattedDate);
         patient_listview.setItems(searchResults);
         patient_listview.setCellFactory(e -> new PatientCellFactory());
         patient = searchResults.get(0);

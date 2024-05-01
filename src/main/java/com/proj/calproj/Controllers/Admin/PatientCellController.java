@@ -44,8 +44,6 @@ public class PatientCellController implements Initializable {
         String username = patient.usernameProperty().getValue();
         ResultSet resultSet = Model.getInstance().getDatabaseDriver().searchPatUsername(username);
         try {
-            System.out.println("Inside onDelete()");
-            System.out.println("username " + username);
             if (resultSet.isBeforeFirst()) {
                 Model.getInstance().getDatabaseDriver().deletePatient(username);
                 Model.getInstance().clearPatientsList();
