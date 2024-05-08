@@ -21,7 +21,7 @@
             <graphic>
                <FontAwesomeIconView glyphName="USER" size="22" />
             </graphic></Button>
-         <Button mnemonicParsing="false" text="Calendar">
+         <Button fx:id="calendar_btn" mnemonicParsing="false" text="Calendar">
             <graphic>
                <FontAwesomeIconView glyphName="TH" size="19" />
             </graphic>

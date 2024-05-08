@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj.calproj.Controllers.Admin.CalendarController">
+    <Text layoutX="27.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+        <font>
+          <Font size="25.0" />
+        </font>
+    </Text>
+   <TableView fx:id="patientTableView" layoutX="20.0" layoutY="129.0" prefHeight="218.0" prefWidth="807.0" styleClass="search_container" stylesheets="@../../Styles/SearchPatient.css">
+     <columns>
+       <TableColumn fx:id="firstName_col" prefWidth="99.19997978210449" text="First name" />
+       <TableColumn fx:id="lastName_col" prefWidth="80.00003814697266" text="Last name" />
+         <TableColumn fx:id="username_col" prefWidth="75.20001220703125" text="Username" />
+         <TableColumn fx:id="password_col" prefWidth="94.39996337890625" text="Password" />
+         <TableColumn fx:id="gender_col" prefWidth="69.5999755859375" text="Gender" />
+         <TableColumn fx:id="birthDate_col" prefWidth="89.59994506835938" text="Birth date" />
+         <TableColumn fx:id="registerDate_col" prefWidth="97.60003662109375" text="Register date" />
+         <TableColumn fx:id="address_col" prefWidth="72.800048828125" text="Address" />
+         <TableColumn fx:id="notes_col" prefWidth="76.0" text="Notes" />
+     </columns>
+   </TableView>
+   <TableView fx:id="nTable" layoutX="224.0" layoutY="378.0" prefHeight="211.0" prefWidth="398.0">
+     <columns>
+       <TableColumn fx:id="nFirstName_col" prefWidth="118.4000244140625" text="nFirst Name" />
+       <TableColumn fx:id="nLastName_col" prefWidth="99.20001220703125" text="nLast Name" />
+         <TableColumn fx:id="nEmail_col" minWidth="4.7999267578125" prefWidth="100.79995727539062" text="nEmail" />
+     </columns>
+   </TableView>
+</AnchorPane>

@@ -4,5 +4,6 @@ public enum AdminMenuOptions {
 
     CREATE_PATIENT,
     SEARCH_PATIENT,
-    PATIENTS
+    PATIENTS,
+    CALENDAR
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj.calproj.Controllers.Admin.RawPatientCellController">
+   <children>
+      <TableView fx:id="pat_table_view" layoutX="-1.0" layoutY="-1.0" prefHeight="392.0" prefWidth="694.0">
+        <columns>
+          <TableColumn fx:id="firstName_col" prefWidth="82.39996641874313" text="First name" />
+          <TableColumn fx:id="lastName_col" prefWidth="84.800048828125" text="Last name" />
+            <TableColumn fx:id="username_col" prefWidth="75.0" text="Username" />
+            <TableColumn fx:id="password_col" prefWidth="75.0" text="Password" />
+            <TableColumn fx:id="gender_col" prefWidth="75.0" text="Gender" />
+            <TableColumn fx:id="birthDate_col" prefWidth="75.0" text="Birth date" />
+            <TableColumn fx:id="registerDate_col" prefWidth="75.0" text="Register date" />
+            <TableColumn fx:id="address_col" prefWidth="75.0" text="Address" />
+            <TableColumn fx:id="notes_col" prefWidth="75.0" text="Notes" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

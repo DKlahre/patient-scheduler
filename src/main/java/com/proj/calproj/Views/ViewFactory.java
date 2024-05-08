@@ -19,6 +19,7 @@ public class ViewFactory {
     private AnchorPane searchPatientView;
     private AnchorPane createPatientView;
     private AnchorPane patientsView;
+    private AnchorPane calendarView;
 
 
     public ViewFactory(){
@@ -92,6 +93,17 @@ public class ViewFactory {
             }
         }
         return patientsView;
+    }
+
+    public AnchorPane getCalendarView() {
+        if (calendarView == null){
+            try {
+                calendarView = new FXMLLoader(getClass().getResource("/Fxml/Admin/Calendar.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return calendarView;
     }
 
     public void showAdminWindow(){

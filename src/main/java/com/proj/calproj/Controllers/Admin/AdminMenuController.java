@@ -15,6 +15,7 @@ public class AdminMenuController implements Initializable {
     public Button logout_btn;
     public Button search_patient_btn;
     public Button patients_btn;
+    public Button calendar_btn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -24,6 +25,7 @@ public class AdminMenuController implements Initializable {
     private void addListeners() {
         create_patient_btn.setOnAction(event -> onCreatePatient());
         search_patient_btn.setOnAction(event -> onSearchPatient());
+        calendar_btn.setOnAction(event -> onCalendar());
         patients_btn.setOnAction(event -> onPatients());
     }
 
@@ -37,6 +39,10 @@ public class AdminMenuController implements Initializable {
 
     private void onPatients() {
         Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.PATIENTS);
+    }
+
+    private void onCalendar() {
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.CALENDAR);
     }
 
     }

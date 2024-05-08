@@ -16,6 +16,7 @@ public class AdminController implements Initializable {
             switch (newVal) {
                 case SEARCH_PATIENT -> admin_parent.setCenter(Model.getInstance().getViewFactory().getSearchPatientView());
                 case PATIENTS -> admin_parent.setCenter(Model.getInstance().getViewFactory().getPatientsView());
+                case CALENDAR -> admin_parent.setCenter(Model.getInstance().getViewFactory().getCalendarView());
                 default -> admin_parent.setCenter(Model.getInstance().getViewFactory().getCreatePatientView());
                 // case CREATE_PATIENT -> admin_parent.setCenter(Model.getInstance().getViewFactory().getCreatePatientView());
             }
