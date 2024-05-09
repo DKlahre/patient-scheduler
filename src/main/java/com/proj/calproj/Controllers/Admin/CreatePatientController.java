@@ -60,6 +60,7 @@ public class CreatePatientController implements Initializable {
         String notes = notes_ta.getText();
         Model.getInstance().getDatabaseDriver().createPatient(fName, lName, username, password, gender, birthDate, LocalDate.now(), address, notes);
 
+        Model.getInstance().getPatients();
         error_lbl.setStyle("-fx-text-fill: blue; -fx-font-size: 1.3em; -fx-font-weight: bold");
         error_lbl.setText("Patient Created Successfully");
         emptyFields();
