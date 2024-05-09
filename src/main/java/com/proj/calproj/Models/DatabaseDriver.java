@@ -140,4 +140,21 @@ public class DatabaseDriver {
         }
         return deletedUsername;
     }
+
+    public ResultSet searchPatUsernameEdit(String username, String firstName) {
+        Statement statement;
+        Statement statement2;
+        ResultSet resultSet = null;
+        try {
+            statement = this.conn.createStatement();
+            int editedRow = statement.executeUpdate("UPDATE Patients SET FirstName = '"+firstName+"' WHERE Username ='"+ username+"';");
+            statement2 = this.conn.createStatement();
+            resultSet = statement2.executeQuery("SELECT * FROM Patients WHERE Username ='"+username+"';");
+        //    deletedUsername = resultSet.getString("Username");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+
+    }
 }

@@ -8,11 +8,13 @@ import com.proj.calproj.Views.PatientCellFactory;
 import com.proj.calproj.Views.RawPatientCellFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -29,8 +31,6 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class CalendarController implements Initializable {
-
-  //  public ListView<Patient> patients_cal_listview;
 
 
   public TableColumn firstName_col;
@@ -54,6 +54,17 @@ public class CalendarController implements Initializable {
     patientTableView.setEditable(true);
     patientTableView.setItems(Model.getInstance().getPatients());
     firstName_col.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+    firstName_col.setCellFactory(TextFieldTableCell.forTableColumn());
+    firstName_col.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Patient, String>>() {
+      @Override
+      public void handle(TableColumn.CellEditEvent<Patient, String> cellEditEvent) {
+        Patient patient = cellEditEvent.getRowValue();
+        patient.firstNameProperty().setValue(cellEditEvent.getNewValue());
+        System.out.println("patient.firstNameProperty().get() " + patient.firstNameProperty().get());
+        Model.getInstance().searchPatUsernameEdit(patient.usernameProperty().get(), patient.firstNameProperty().get());
+      }
+    });
+
     lastName_col.setCellValueFactory(new PropertyValueFactory<>("lastName"));
    // username_col.setCellValueFactory(new PropertyValueFactory<>("username"));
    // password_col.setCellValueFactory(new PropertyValueFactory<>("password"));
@@ -62,7 +73,6 @@ public class CalendarController implements Initializable {
    // registerDate_col.setCellValueFactory(new PropertyValueFactory<>("registerDate"));
    // address_col.setCellValueFactory(new PropertyValueFactory<>("address"));
     notes_col.setCellValueFactory(new PropertyValueFactory<>("notes"));
-
 
   }
 
