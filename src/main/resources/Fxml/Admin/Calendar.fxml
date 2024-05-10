@@ -12,7 +12,7 @@
           <Font size="25.0" />
         </font>
     </Text>
-   <TableView fx:id="patientTableView" layoutX="20.0" layoutY="129.0" prefHeight="218.0" prefWidth="807.0" styleClass="search_container" stylesheets="@../../Styles/SearchPatient.css">
+   <TableView fx:id="patientTableView" fixedCellSize="70.0" layoutX="20.0" layoutY="129.0" prefHeight="218.0" prefWidth="807.0" styleClass="search_container" stylesheets="@../../Styles/SearchPatient.css">
      <columns>
        <TableColumn fx:id="firstName_col" prefWidth="89.60000419616699" text="First name" />
        <TableColumn fx:id="lastName_col" prefWidth="86.4000015258789" text="Last name" />
