@@ -84,19 +84,9 @@ public class CalendarController implements Initializable {
       @Override
       public void handle(TableColumn.CellEditEvent<Patient, String> cellEditEvent) {
         Patient patient = cellEditEvent.getRowValue();
-
-//        Text hey = new Text(notes_col.getText());
-//        hey.setWrappingWidth(notes_col.getWidth() - 1000);
-//        patient.notesProperty().setValue(String.valueOf(hey.getText().length()));
         patient.notesProperty().setValue(cellEditEvent.getNewValue());
-
-        System.out.println("patient.firstNameProperty().get() " + patient.notesProperty().get());
         Model.getInstance().searchPatUsernameEdit(patient.usernameProperty().get(), patient.notesProperty().get());
-
-
-
       }
-
 
     });
   }
