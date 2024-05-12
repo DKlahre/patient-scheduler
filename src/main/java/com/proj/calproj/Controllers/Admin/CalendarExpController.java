@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -28,6 +29,8 @@ public class CalendarExpController implements Initializable {
     public Text year;
     public Text month;
     public FlowPane calendar;
+    public Button forward_btn;
+    public Button backward_btn;
     ZonedDateTime dateFocus;
     ZonedDateTime today;
 
@@ -44,21 +47,27 @@ public class CalendarExpController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
+        addListeners();
         drawCalendar();
     }
 
     @FXML
-    void backOneMonth(ActionEvent event) {
+    void backOneMonth() {
         dateFocus = dateFocus.minusMonths(1);
         calendar.getChildren().clear();
         drawCalendar();
     }
 
     @FXML
-    void forwardOneMonth(ActionEvent event) {
+    void forwardOneMonth() {
         dateFocus = dateFocus.plusMonths(1);
         calendar.getChildren().clear();
         drawCalendar();
+    }
+
+    private void addListeners(){
+        forward_btn.setOnAction(event -> forwardOneMonth());
+        backward_btn.setOnAction(event -> backOneMonth());
     }
 
     private void drawCalendar(){
