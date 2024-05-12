@@ -56,10 +56,10 @@ public class CreatePatientController implements Initializable {
         String password = password_fld.getText();
         String gender = gender_fld.getText();
         String birthDate = birth_date_fld.getText();
-        String  address = address_fld.getText();
+        String address = address_fld.getText();
         String notes = notes_ta.getText();
         Model.getInstance().getDatabaseDriver().createPatient(fName, lName, username, password, gender, birthDate, LocalDate.now(), address, notes);
-
+        Model.getInstance().setPatients();
         Model.getInstance().getPatients();
         error_lbl.setStyle("-fx-text-fill: blue; -fx-font-size: 1.3em; -fx-font-weight: bold");
         error_lbl.setText("Patient Created Successfully");
@@ -74,6 +74,7 @@ public class CreatePatientController implements Initializable {
         birth_date_fld.setText("");
         address_fld.setText("");
         username_lbl.setText("");
+        notes_ta.setText("");
         username_box.setSelected(false);
 
     }
