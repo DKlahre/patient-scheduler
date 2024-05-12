@@ -46,7 +46,6 @@ public class CalendarController implements Initializable {
   public TableColumn notes_col;
   public TableView patientTableView;
   private  Patient patient;
-
   private String hey;
 
 

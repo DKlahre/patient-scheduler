@@ -26,6 +26,7 @@
                <FontAwesomeIconView glyphName="TH" size="19" />
             </graphic>
          </Button>
+         <Button fx:id="calendarExp_btn" mnemonicParsing="false" text="CalendarExp" />
          <Button fx:id="patients_btn" mnemonicParsing="false" text="Patient List">
             <graphic>
                <FontAwesomeIconView glyphName="LIST" size="18" />
