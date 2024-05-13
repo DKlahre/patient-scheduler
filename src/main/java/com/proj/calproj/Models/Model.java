@@ -68,7 +68,8 @@ public class Model {
                 LocalDate registerDate = LocalDate.of(Integer.parseInt(registerDateParts[0]), Integer.parseInt(registerDateParts[1]), Integer.parseInt(registerDateParts[2]));
                 String address = resultSet.getString("Address");
                 String notes = resultSet.getString("Notes");
-                patients.add(new Patient(fName, lName, username, password, gender, birthDate, registerDate, address, notes));
+                String physician = resultSet.getString("Physician");
+                patients.add(new Patient(fName, lName, username, password, gender, birthDate, registerDate, address, notes, physician));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -114,7 +115,8 @@ public class Model {
             LocalDate patRegisterDate = LocalDate.of(Integer.parseInt(registerDateParts[0]), Integer.parseInt(registerDateParts[1]), Integer.parseInt(registerDateParts[2]));
             String patAddress = resultSet.getString("Address");
             String patNotes = resultSet.getString("Notes");
-            searchResult.add(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes));
+            String physician = resultSet.getString("Physician");
+            searchResult.add(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes, physician));
         } catch (Exception e) {
             e.printStackTrace();
        }
@@ -136,10 +138,11 @@ public class Model {
             LocalDate patRegisterDate = LocalDate.of(Integer.parseInt(registerDateParts[0]), Integer.parseInt(registerDateParts[1]), Integer.parseInt(registerDateParts[2]));
             String patAddress = resultSet.getString("Address");
             String patNotes = resultSet.getString("Notes");
+            String physician = resultSet.getString("Physician");
             if (notes != null) {
                 patNotes = notes;
             }
-            searchResult.setAll(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes));
+            searchResult.setAll(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes, physician));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -160,7 +163,8 @@ public class Model {
             LocalDate patRegisterDate = LocalDate.of(Integer.parseInt(registerDateParts[0]), Integer.parseInt(registerDateParts[1]), Integer.parseInt(registerDateParts[2]));
             String patAddress = resultSet.getString("Address");
             String patNotes = resultSet.getString("Notes");
-            searchResult.add(new Patient(fName, lastName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes));
+            String physician = resultSet.getString("Physician");
+            searchResult.add(new Patient(fName, lastName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes, physician));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -182,7 +186,8 @@ public class Model {
             LocalDate patRegisterDate = LocalDate.of(Integer.parseInt(registerDateParts[0]), Integer.parseInt(registerDateParts[1]), Integer.parseInt(registerDateParts[2]));
             String patAddress = resultSet.getString("Address");
             String patNotes = resultSet.getString("Notes");
-            searchResult.add(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes));
+            String physician = resultSet.getString("Physician");
+            searchResult.add(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes, physician));
         } catch (Exception e) {
             e.printStackTrace();
         }

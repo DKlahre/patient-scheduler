@@ -75,9 +75,9 @@ public class RawPatientCellController implements Initializable {
         LocalDate bDate = LocalDate.of(Integer.parseInt("2012"), Integer.parseInt("03"), Integer.parseInt("10"));
         //   LocalDate bDate = LocalDate.of(year, day, month);
         final ObservableList<Patient> data = FXCollections.observableArrayList(
-                new Patient("Dan", "Claire", "DClaire", "fjag73$df", "male", bDate, LocalDate.now(), "131 Old St. Kuberville, MS 12323", "Growth around nostril. Previously removed through salicylic acid. Requires surgery for permanent removal."),
-                new Patient("Bob", "Claire", "BClaire", "fjag7$df", "male", bDate, LocalDate.now(), "131 Old St. Kubeille, MS 12323", "Growth around tril. Previously removed through salicylic acid. Requires surgery for permanent removal."),
-                new Patient("Dn", "Clare", "DClaie", "fjg73$df", "male", bDate, LocalDate.now(), "131 Old St. Kuerville, MS 12323", "Growth arond nostril. Previously removed through salicylic acid. Requires surgery for permanent removal.")
+                new Patient("Dan", "Claire", "DClaire", "fjag73$df", "male", bDate, LocalDate.now(), "131 Old St. Kuberville, MS 12323", "Growth around nostril. Previously removed through salicylic acid. Requires surgery for permanent removal.", "Patricia Murfy"),
+                new Patient("Bob", "Claire", "BClaire", "fjag7$df", "male", bDate, LocalDate.now(), "131 Old St. Kubeille, MS 12323", "Growth around tril. Previously removed through salicylic acid. Requires surgery for permanent removal.", "Bella Pegosi"),
+                new Patient("Dn", "Clare", "DClaie", "fjg73$df", "male", bDate, LocalDate.now(), "131 Old St. Kuerville, MS 12323", "Growth arond nostril. Previously removed through salicylic acid. Requires surgery for permanent removal.", "Benedict Sideswacker")
         );
 
         pat_table_view.setItems(data);
@@ -122,7 +122,11 @@ public class RawPatientCellController implements Initializable {
         column9.setMinWidth(20);
         column9.setCellValueFactory(new PropertyValueFactory<>("patNotes"));
 
-        pat_table_view.getColumns().addAll(column1, column2, column3, column4, column5, column6, column7, column8, column9);
+        TableColumn column10 = new TableColumn("Physician");
+        column10.setMinWidth(20);
+        column10.setCellValueFactory(new PropertyValueFactory<>("patAssignedPhysician"));
+
+        pat_table_view.getColumns().addAll(column1, column2, column3, column4, column5, column6, column7, column8, column9, column10);
 
         TextField firstName = new TextField();
         firstName.setMaxWidth(column1.getPrefWidth());
@@ -159,6 +163,10 @@ public class RawPatientCellController implements Initializable {
         TextField notes = new TextField();
         notes.setMaxWidth(column9.getPrefWidth());
         notes.setPromptText("Notes");
+
+        TextField physician = new TextField();
+        physician.setMaxWidth(column10.getPrefWidth());
+        physician.setPromptText("Physician");
 
 
 

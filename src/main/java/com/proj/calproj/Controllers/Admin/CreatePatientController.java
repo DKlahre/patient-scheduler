@@ -22,6 +22,7 @@ public class CreatePatientController implements Initializable {
     public CheckBox username_box;
     public Label username_lbl;
     public TextArea notes_ta;
+    public TextField assignedPhysician_fld;
     private String username;
     private boolean createPatientFlag = false;
 
@@ -58,6 +59,7 @@ public class CreatePatientController implements Initializable {
         String birthDate = birth_date_fld.getText();
         String address = address_fld.getText();
         String notes = notes_ta.getText();
+        String assignedPhysician = assignedPhysician_fld.getText();
         Model.getInstance().getDatabaseDriver().createPatient(fName, lName, username, password, gender, birthDate, LocalDate.now(), address, notes);
         Model.getInstance().setPatients();
         Model.getInstance().getPatients();
@@ -75,6 +77,7 @@ public class CreatePatientController implements Initializable {
         address_fld.setText("");
         username_lbl.setText("");
         notes_ta.setText("");
+        assignedPhysician_fld.setText("");
         username_box.setSelected(false);
 
     }

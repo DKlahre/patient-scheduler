@@ -18,8 +18,9 @@ public class Patient {
     private final ObjectProperty<LocalDate> registerDate;
     private final StringProperty address;
     private final StringProperty notes;
+    private final StringProperty assignedPhysician;
 
-    public Patient(String patFirstName, String patLastName, String patUsername, String patPassword, String patGender, LocalDate patBirthDate, LocalDate patRegisterDate, String patAddress, String patNotes) {
+    public Patient(String patFirstName, String patLastName, String patUsername, String patPassword, String patGender, LocalDate patBirthDate, LocalDate patRegisterDate, String patAddress, String patNotes, String patAssignedPhysician) {
         this.firstName = new SimpleStringProperty(this, "FirstName", patFirstName);
         this.lastName = new SimpleStringProperty(this, "LastName", patLastName);
         this.username = new SimpleStringProperty(this, "Username", patUsername);
@@ -29,6 +30,7 @@ public class Patient {
         this.registerDate = new SimpleObjectProperty<>(this, "RegisterDate", patRegisterDate);
         this.address = new SimpleStringProperty(this, "Address", patAddress);
         this.notes = new SimpleStringProperty(this, "Notes", patNotes);
+        this.assignedPhysician = new SimpleStringProperty(this,"Physician", patAssignedPhysician);
     }
 
     public StringProperty firstNameProperty() {return firstName;}
@@ -40,6 +42,9 @@ public class Patient {
     public ObjectProperty<LocalDate> registerDateProperty() {return registerDate;}
     public StringProperty addressProperty() {return address;}
     public StringProperty notesProperty() {return notes;}
+    public StringProperty assignedPhysicianProperty() {
+        return  assignedPhysician;
+    }
 
 
 
