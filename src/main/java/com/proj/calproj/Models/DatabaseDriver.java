@@ -43,18 +43,14 @@ public class DatabaseDriver {
         return resultSet;
     }
 
-    public void createPatient(String fName, String lName, String uname, String pword, String gen, String bDate, LocalDate regDate, String add, String notes) {
+    public void createPatient(String fName, String lName, String uname, String pword, String gen, String bDate, LocalDate regDate, String add, String notes, String physician) {
       //  System.out.println("fName: " +fName + " lName: " + lName + " username: " +username + " password: " + password + " gender: " + gender + " birthdate: "+birthDate +  " address: "+address);
         Statement statement;
         try {
             statement = this.conn.createStatement();
-//            statement.executeUpdate("INSERT INTO Patients (FirstName, LastName, Username, Password, Gender, BirthDate, Address)" +
-//                    "VALUES ('"+fName +"', '"+lName+"', '"+uname+"', '"+pword+"', '"+gen+"', "+bDate+"', '"+add+"');");
 
-            statement.executeUpdate("Insert INTO Patients (FirstName, LastName, Username, Password, Gender, Birthdate, RegisterDate, Address, Notes)" +
-                    "VALUES ('"+fName +"', '"+ lName+"', '"+ uname+"', '"+ pword+"', '"+ gen+"', '"+ bDate+"', '"+ regDate.toString()+"', '"+ add+"', '"+ notes+"');");
-
-          //  String query = "INSERT INTO Patients '"+ id.getText() +"' , username='"+ username.getText() + "', password='"+ pass.getText() +"', firstname='"+ fname.getText() +"', lastname='"+ lname.getText() +"' WHERE ID='"+ id.getText() +"'  ";
+            statement.executeUpdate("Insert INTO Patients (FirstName, LastName, Username, Password, Gender, Birthdate, RegisterDate, Address, Notes, Physician)" +
+                    "VALUES ('"+fName +"', '"+ lName+"', '"+ uname+"', '"+ pword+"', '"+ gen+"', '"+ bDate+"', '"+ regDate.toString()+"', '"+ add+"', '"+ notes+"', '"+ physician+"');");
 
         } catch (SQLException e) {
             e.printStackTrace();
