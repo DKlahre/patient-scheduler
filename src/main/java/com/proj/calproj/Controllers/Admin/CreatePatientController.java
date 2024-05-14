@@ -1,6 +1,9 @@
 package com.proj.calproj.Controllers.Admin;
 
 import com.proj.calproj.Models.Model;
+import com.proj.calproj.Views.AccountType;
+import com.proj.calproj.Views.PhysicianOptions;
+import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
@@ -23,19 +26,41 @@ public class CreatePatientController implements Initializable {
     public Label username_lbl;
     public TextArea notes_ta;
     public TextField assignedPhysician_fld;
+    public ChoiceBox physician_selector;
     private String username;
     private boolean createPatientFlag = false;
+
+    private String assignedPhysician;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         create_patient_btn.setOnAction(event -> createPatient());
+        physician_selector.setItems(FXCollections.observableArrayList(PhysicianOptions.MJohnson, PhysicianOptions.CBlake, PhysicianOptions.DKnight, PhysicianOptions.MSchlenger, PhysicianOptions.SRedstone, PhysicianOptions.JMellon));
+
         username_box.selectedProperty().addListener((observableValue, oldVal, newVal) -> {
             if (newVal) {
                 username = createPatientUsername();
                 onCreatePatientUsername();
             }
         });
+    }
+
+    private void setPhysician_selector() {
+        if (physician_selector.getValue() == PhysicianOptions.MJohnson) {
+            assignedPhysician = PhysicianOptions.MJohnson.toString();
+        } else if (physician_selector.getValue() == PhysicianOptions.JMellon) {
+            assignedPhysician = PhysicianOptions.JMellon.toString();
+        } else if (physician_selector.getValue() == PhysicianOptions.DKnight) {
+            assignedPhysician = PhysicianOptions.DKnight.toString();
+        } else if (physician_selector.getValue() == PhysicianOptions.MSchlenger) {
+            assignedPhysician = PhysicianOptions.MSchlenger.toString();
+        } else if (physician_selector.getValue() == PhysicianOptions.CBlake) {
+            assignedPhysician = PhysicianOptions.CBlake.toString();
+        } else if (physician_selector.getValue() == PhysicianOptions.SRedstone) {
+            assignedPhysician = PhysicianOptions.SRedstone.toString();
+        }
+
     }
 
     private String createPatientUsername() {
@@ -59,7 +84,8 @@ public class CreatePatientController implements Initializable {
         String birthDate = birth_date_fld.getText();
         String address = address_fld.getText();
         String notes = notes_ta.getText();
-        String assignedPhysician = assignedPhysician_fld.getText();
+        physician_selector.valueProperty().addListener(observable -> setPhysician_selector());
+
         Model.getInstance().getDatabaseDriver().createPatient(fName, lName, username, password, gender, birthDate, LocalDate.now(), address, notes, assignedPhysician);
         Model.getInstance().setPatients();
         Model.getInstance().getPatients();

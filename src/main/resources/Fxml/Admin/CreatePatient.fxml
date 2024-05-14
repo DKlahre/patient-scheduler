@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -26,7 +27,7 @@
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
       <TextField fx:id="password_fld" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Assigned Physician" />
-      <TextField fx:id="assignedPhysician_fld" />
+      <ChoiceBox fx:id="physician_selector" prefHeight="26.0" prefWidth="163.0" />
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <VBox prefHeight="76.0" prefWidth="231.0">
