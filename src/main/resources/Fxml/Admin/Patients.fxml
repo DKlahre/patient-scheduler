@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="850.0" styleClass="patients_container" stylesheets="@../../Styles/Patients.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj.calproj.Controllers.Admin.PatientsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="850.0" styleClass="patients_container" stylesheets="@../../Styles/Patients.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj.calproj.Controllers.Admin.PatientsController">
    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patients" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
       <font>
          <Font size="22.0" />
