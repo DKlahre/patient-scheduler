@@ -2,10 +2,10 @@ package com.proj.calproj.Views;
 
 public enum PhysicianOptions {
 
-    MJohnson,
-    SRedstone,
-    MSchlenger,
-    JMellon,
-    CBlake,
-    DKnight
+    Dr_Milton_Johnson,
+    Dr_Sheldon_Redstone,
+    Dr_Michael_Schlenger,
+    Dr_Janet_Mellon,
+    Dr_Chris_Blake,
+    Dr_Darren_Knight
 }
