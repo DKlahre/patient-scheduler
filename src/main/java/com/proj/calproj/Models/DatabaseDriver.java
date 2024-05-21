@@ -153,4 +153,16 @@ public class DatabaseDriver {
         return resultSet;
 
     }
+
+    public ResultSet searchAppMonthYear(String monthAndYear){
+        Statement statement;
+        ResultSet resultSet = null;
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM Appointments WHERE AppMonthAndYear ='"+ monthAndYear +"';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
 }

@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Model {
     private static Model model;
@@ -204,6 +205,34 @@ public class Model {
 
     public boolean getAdminLoginSuccessFlag() {
         return this.adminLoginSuccessFlag;
+    }
+
+    public List<Appointment> searchAppByMonthAndYear(String monthAndYear) {
+        System.out.println("monthAdnYear(Model): " + monthAndYear);
+        List<Appointment> searchResult = FXCollections.observableArrayList();
+        ResultSet resultSet = databaseDriver.searchAppMonthYear(monthAndYear);
+//        ResultSet resultSet2;
+        try {
+            while (resultSet.next()) {
+                String physUsername = resultSet.getString("PhysUsername");
+                System.out.println("physUsername: whooi " + physUsername);
+                String patUsername = resultSet.getString("PatUsername");
+                System.out.println("patUsername: whooi " + patUsername);
+                String appDayOfMonth = resultSet.getString("AppDayOfMonth");
+                System.out.println("appDayOfMonth: " + appDayOfMonth);
+                String appMonthAndYear = resultSet.getString("AppMonthAndYear");
+                System.out.println("appMonthAndYear: " + appMonthAndYear);
+                String appTime = resultSet.getString("AppTime");
+                System.out.println("appTime: " + appTime);
+//            resultSet2 = databaseDriver.searchPatMonthYear(patUsername);
+//            String fName = resultSet2.getString("FirstName");
+//            String lName = resultSet2.getString("LastName");
+                searchResult.add(new Appointment(physUsername, patUsername, appDayOfMonth, appMonthAndYear, appTime));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return searchResult;
     }
 
 }
