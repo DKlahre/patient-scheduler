@@ -218,7 +218,7 @@ public class Model {
                 System.out.println("physUsername: whooi " + physUsername);
                 String patUsername = resultSet.getString("PatUsername");
                 System.out.println("patUsername: whooi " + patUsername);
-                String appDayOfMonth = resultSet.getString("AppDayOfMonth");
+                String appDayOfMonth = String.valueOf(resultSet.getInt("AppDayOfMonth"));
                 System.out.println("appDayOfMonth: " + appDayOfMonth);
                 String appMonthAndYear = resultSet.getString("AppMonthAndYear");
                 System.out.println("appMonthAndYear: " + appMonthAndYear);

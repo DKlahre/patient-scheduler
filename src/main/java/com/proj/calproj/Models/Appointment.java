@@ -15,7 +15,7 @@ public class Appointment {
 
         this.physUsername = new SimpleStringProperty(this, "PhysUsername", physUsername);
         this.patUsername = new SimpleStringProperty(this, "PatUsername", patUsername);
-        this.appDayOfMonth = new SimpleStringProperty(this, "AppDayOfTheMonth", appDayOfMonth);
+        this.appDayOfMonth = new SimpleStringProperty(this, "AppDayOfMonth", appDayOfMonth);
         this.appMonthAndYear = new SimpleStringProperty(this, "AppMonthAndYear", appMonthAndYear);
         this.appTime = new SimpleStringProperty(this, "AppTime", appTime);
 
@@ -25,4 +25,6 @@ public class Appointment {
     public StringProperty appDayOfMonthProperty() {return appDayOfMonth;}
     public StringProperty appMonthAndYearProperty() {return appMonthAndYear;}
     public StringProperty appTimeProperty() {return appTime;}
+
+
 }
