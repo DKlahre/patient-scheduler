@@ -126,10 +126,12 @@ public class CalendarExpController implements Initializable {
         //List of activities for a given month
         // Map<Integer, List<CalendarExpActivity>> calendarActivityMap = getCalendarActivitiesMonth(dateFocus);
 
-        System.out.println("dateFocus " + dateFocus);
-        Map<Integer, List<Appointment>> calendarAppointmentMap = getCalendarActivitiesMonth(dateFocus);
-        System.out.println("calendarAppointmentMap.get(0)");
 
+        Map<String, List<Appointment>> calendarAppointmentMap = getCalendarActivitiesMonth(dateFocus);
+
+        System.out.println("calendarAppointmentMap.values() - in drawCalendar() " + calendarAppointmentMap.values());
+        System.out.println("calendarAppointmentMap.keySet() - in drawCalendar() " + calendarAppointmentMap.keySet());
+        System.out.println("calendarAppointmentMap.get(03)" + calendarAppointmentMap.get("05"));
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
         //Check for leap year
@@ -230,24 +232,25 @@ public class CalendarExpController implements Initializable {
 //        stackPane.getChildren().add(calendarActivityBox);
 //    }
 
-    private Map<Integer, List<Appointment>> createCalendarMap(List<Appointment> appointmentList) {
+    private Map<String, List<Appointment>> createCalendarMap(List<Appointment> appointmentList) {
 
-
-        Map<Integer, List<Appointment>> calendarAppointmentMap = new HashMap<>();
+        Map<String, List<Appointment>> calendarAppointmentMap = new HashMap<>();
 
         for (Appointment appointment: appointmentList) {
 
-          //  int activityDate = activity.getDate().getDayOfMonth();
+            //  int activityDate = activity.getDate().getDayOfMonth();
             // Integer.parseInt(appointment.appDayOfMonthProperty().toString())
-            if(!calendarAppointmentMap.containsKey(Integer.valueOf(appointment.appDayOfMonthProperty().toString()))){
-                System.out.println("createCalendarMap ");
-                calendarAppointmentMap.put(Integer.valueOf(appointment.appDayOfMonthProperty().toString()), List.of(appointment));
-
+            if(!calendarAppointmentMap.containsKey(appointment.appDayOfMonthProperty().getValue())){
+//                System.out.println("createCalendarMap ");
+//                System.out.println("calendarAppointmentMap.keySet() before put " + calendarAppointmentMap.keySet());
+                calendarAppointmentMap.put((appointment.appDayOfMonthProperty().getValue()), List.of(appointment));
+//                System.out.println("appointment.appDayOfMonthProperty().getValue vgybhu " + appointment.appDayOfMonthProperty().getValue());
+//                System.out.println("calendarAppointmentMap.keySet() after put " + calendarAppointmentMap.keySet());
             } else {
-                List<Appointment> OldListByDate = calendarAppointmentMap.get(Integer.valueOf(appointment.appDayOfMonthProperty().toString()));
+                List<Appointment> OldListByDate = calendarAppointmentMap.get(appointment.appDayOfMonthProperty().getValue());
                 List<Appointment> newList = new ArrayList<>(OldListByDate);
                 newList.add(appointment);
-                calendarAppointmentMap.put(Integer.valueOf(appointment.appDayOfMonthProperty().toString()),newList);
+                calendarAppointmentMap.put((appointment.appDayOfMonthProperty().getValue()), newList);
             }
         }
 
@@ -294,8 +297,8 @@ public class CalendarExpController implements Initializable {
 //    }
 
 
-    private Map<Integer, List<Appointment>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
-       // List<Appointment> calendarActivities = new ArrayList<>();
+    private Map<String, List<Appointment>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
+        // List<Appointment> calendarActivities = new ArrayList<>();
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
         String strDateFocus = dateFocus.toString();
@@ -303,13 +306,11 @@ public class CalendarExpController implements Initializable {
         String strDayOfMonth = strDateFocus.substring(8, 10);
 
 
-            List<Appointment> searchResults = Model.getInstance().searchAppByMonthAndYear(strMonthYear);
-            System.out.println("searchResults.size()" + searchResults.size());
-            System.out.println("searchResults(6)" + searchResults.get(6));
-//            Appointment appointment = searchResults.get(3);
-//            System.out.println("appointment.patUsernameProperty()" + appointment.patUsernameProperty());
+        List<Appointment> searchResults = Model.getInstance().searchAppByMonthAndYear(strMonthYear);
+        Appointment appointment = searchResults.get(1);
+        System.out.println("appointment.patUsernameProperty()" + appointment.patUsernameProperty());
 
-           // System.out.println("searchResults:$$$ " + searchResults.get(8));
+        // System.out.println("searchResults:$$$ " + searchResults.get(8));
 
 //        for (int i = 0; i < 15; i++) {
 //

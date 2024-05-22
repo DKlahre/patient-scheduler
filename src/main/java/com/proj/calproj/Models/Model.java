@@ -34,7 +34,7 @@ public class Model {
     }
 
     public static synchronized Model getNewInstance() {
-            model = new Model();
+        model = new Model();
         return model;
     }
 
@@ -44,17 +44,17 @@ public class Model {
 
     public void evaluatePhysicianCred(String username, String password) {
         ResultSet resultSet = databaseDriver.getPhysicianData(username, password);
-            try {
-                if (resultSet.isBeforeFirst()) {
-                    this.physicianLoginSuccessFlag = true;
-                }
-            } catch(Exception e){
-                e.printStackTrace();
+        try {
+            if (resultSet.isBeforeFirst()) {
+                this.physicianLoginSuccessFlag = true;
             }
+        } catch(Exception e){
+            e.printStackTrace();
         }
+    }
 
 
-   public void setPatients(){
+    public void setPatients(){
         ResultSet resultSet = databaseDriver.getAllPatientsData();
         try {
             while (resultSet.next()) {
@@ -75,23 +75,23 @@ public class Model {
         } catch (Exception e) {
             e.printStackTrace();
         }
-   }
+    }
 
-   public void clearPatientsList(){
-       ResultSet resultSet = null;
+    public void clearPatientsList(){
+        ResultSet resultSet = null;
 
-       try {
-           patients.clear();
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
-   }
+        try {
+            patients.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-   public ObservableList<Patient> getPatients() {
+    public ObservableList<Patient> getPatients() {
         return patients;
-   }
+    }
 
-   public void evaluateAdminCred(String username, String password) {
+    public void evaluateAdminCred(String username, String password) {
         ResultSet resultSet = databaseDriver.getAdminData(username, password);
         try {
             if (resultSet.isBeforeFirst()){
@@ -100,9 +100,9 @@ public class Model {
         } catch (Exception e){
             e.printStackTrace();
         }
-   }
+    }
 
-   public ObservableList<Patient> searchPatUsername(String username) {
+    public ObservableList<Patient> searchPatUsername(String username) {
         ObservableList<Patient> searchResult = FXCollections.observableArrayList();
         ResultSet resultSet = databaseDriver.searchPatUsername(username);
         try {
@@ -120,9 +120,9 @@ public class Model {
             searchResult.add(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes, physician));
         } catch (Exception e) {
             e.printStackTrace();
-       }
-       return searchResult;
-   }
+        }
+        return searchResult;
+    }
 
     public ObservableList<Patient> searchPatUsernameEdit(String username, String notes) {
         ObservableList<Patient> searchResult = FXCollections.observableArrayList();
@@ -150,7 +150,7 @@ public class Model {
         return searchResult;
     }
 
-   public ObservableList<Patient> searchPatLastName(String lastName) {
+    public ObservableList<Patient> searchPatLastName(String lastName) {
         ObservableList<Patient> searchResult = FXCollections.observableArrayList();
         ResultSet resultSet = databaseDriver.searchPatLastName(lastName);
         try {
@@ -169,10 +169,10 @@ public class Model {
         } catch (Exception e) {
             e.printStackTrace();
         }
-       return searchResult;
-   }
+        return searchResult;
+    }
 
-   public ObservableList<Patient> searchPatBirthDate(String birthDate) {
+    public ObservableList<Patient> searchPatBirthDate(String birthDate) {
         ObservableList<Patient> searchResult = FXCollections.observableArrayList();
         ResultSet resultSet = databaseDriver.searchPatBirthDate(birthDate);
         try {
@@ -192,8 +192,8 @@ public class Model {
         } catch (Exception e) {
             e.printStackTrace();
         }
-       return searchResult;
-   }
+        return searchResult;
+    }
 
     public DatabaseDriver getDatabaseDriver() {
         return databaseDriver;
@@ -218,7 +218,7 @@ public class Model {
                 System.out.println("physUsername: whooi " + physUsername);
                 String patUsername = resultSet.getString("PatUsername");
                 System.out.println("patUsername: whooi " + patUsername);
-                String appDayOfMonth = String.valueOf(resultSet.getInt("AppDayOfMonth"));
+                String appDayOfMonth = resultSet.getString("AppDayOfMonth");
                 System.out.println("appDayOfMonth: " + appDayOfMonth);
                 String appMonthAndYear = resultSet.getString("AppMonthAndYear");
                 System.out.println("appMonthAndYear: " + appMonthAndYear);

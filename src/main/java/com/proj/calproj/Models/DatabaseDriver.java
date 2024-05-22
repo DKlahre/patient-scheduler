@@ -44,7 +44,7 @@ public class DatabaseDriver {
     }
 
     public void createPatient(String fName, String lName, String uname, String pword, String gen, String bDate, LocalDate regDate, String add, String notes, String physician) {
-      //  System.out.println("fName: " +fName + " lName: " + lName + " username: " +username + " password: " + password + " gender: " + gender + " birthdate: "+birthDate +  " address: "+address);
+        //  System.out.println("fName: " +fName + " lName: " + lName + " username: " +username + " password: " + password + " gender: " + gender + " birthdate: "+birthDate +  " address: "+address);
         Statement statement;
         try {
             statement = this.conn.createStatement();
@@ -146,7 +146,7 @@ public class DatabaseDriver {
             int editedRow = statement.executeUpdate("UPDATE Patients SET Notes = '"+notes+"' WHERE Username ='"+ username+"';");
             statement2 = this.conn.createStatement();
             resultSet = statement2.executeQuery("SELECT * FROM Patients WHERE Username ='"+username+"';");
-        //    deletedUsername = resultSet.getString("Username");
+            //    deletedUsername = resultSet.getString("Username");
         } catch (SQLException e) {
             e.printStackTrace();
         }
