@@ -154,7 +154,7 @@ public class CalendarExpController implements Initializable {
                 rectangle.setStrokeWidth(strokeWidth);
                 double rectangleWidth = (calendarWidth/7) - strokeWidth - spacingH;
                 rectangle.setWidth(rectangleWidth);
-                double rectangleHeight = (calendarHeight/6) - strokeWidth - spacingV;
+                double rectangleHeight = (calendarHeight/4.5) - strokeWidth - spacingV;
                 rectangle.setHeight(rectangleHeight);
                 stackPane.getChildren().add(rectangle);
 
@@ -176,8 +176,8 @@ public class CalendarExpController implements Initializable {
                         }
 
                         List<Appointment> calendarActivities = calendarAppointmentMap.get(strDayOfMonth);
-                        System.out.println("calendarActivityMap.get(currentDate): " + calendarAppointmentMap.get(String.valueOf(currentDate)));
-                        System.out.println("strCurrentDate " + strDayOfMonth);
+                        System.out.println("calendarActivityMap.get(strDayOfMonth).get(strDayOfMonth): " + calendarAppointmentMap.get(strDayOfMonth));
+                        System.out.println("calenderActivities: " + calendarActivities);
                         if(calendarActivities != null) {
                             createCalendarActivity(calendarActivities, rectangleHeight, rectangleWidth, stackPane);
                         }
@@ -204,8 +204,13 @@ public class CalendarExpController implements Initializable {
                 });
                 break;
             }
-            Text text = new Text(calendarActivities.get(k).patUsernameProperty() + ", " + calendarActivities.get(k).appTimeProperty());
+          //  Text text = new Text(calendarActivities.get(k).patUsernameProperty() + ", " + calendarActivities.get(k).appTimeProperty());
+            Text text = new Text(calendarActivities.get(k).patUsernameProperty());
+            Text text2 = new Text( calendarActivities.get(k).appTimeProperty());
+
+
             calendarActivityBox.getChildren().add(text);
+            calendarActivityBox.getChildren().add(text2);
             text.setOnMouseClicked(mouseEvent -> {
                 //On Text clicked
                 System.out.println(text.getText());
@@ -319,8 +324,8 @@ public class CalendarExpController implements Initializable {
 
 
         List<Appointment> searchResults = Model.getInstance().searchAppByMonthAndYear(strMonthYear);
-        Appointment appointment = searchResults.get(1);
-        System.out.println("appointment.patUsernameProperty()" + appointment.patUsernameProperty());
+//        Appointment appointment = searchResults.get(1);
+//        System.out.println("appointment.patUsernameProperty()" + appointment.patUsernameProperty());
 
         // System.out.println("searchResults:$$$ " + searchResults.get(8));
 

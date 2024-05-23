@@ -21,8 +21,10 @@ public class Appointment {
 
     }
     public StringProperty physUsernameProperty() {return physUsername;}
-    public StringProperty patUsernameProperty() {return  patUsername;}
+    public String patUsernameProperty() {
+        return  patUsername.get();}
     public StringProperty appDayOfMonthProperty() {return appDayOfMonth;}
     public StringProperty appMonthAndYearProperty() {return appMonthAndYear;}
-    public StringProperty appTimeProperty() {return appTime;}
+    public String appTimeProperty() {
+        return appTime.get();}
 }
