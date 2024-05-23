@@ -122,6 +122,7 @@ public class CalendarExpController implements Initializable {
         double strokeWidth = 1;
         double spacingH = calendar.getHgap();
         double spacingV = calendar.getVgap();
+        String strDayOfMonth = null;
 
         //List of activities for a given month
         // Map<Integer, List<CalendarExpActivity>> calendarActivityMap = getCalendarActivitiesMonth(dateFocus);
@@ -140,6 +141,8 @@ public class CalendarExpController implements Initializable {
         }
 
         int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1,0,0,0,0,dateFocus.getZone()).getDayOfWeek().getValue();
+
+        System.out.println("dateOffset: " + dateOffset);
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
@@ -163,9 +166,18 @@ public class CalendarExpController implements Initializable {
                         Text date = new Text(String.valueOf(currentDate));
                         double textTranslationY = - (rectangleHeight / 2) * 0.75;
                         date.setTranslateY(textTranslationY);
+                        System.out.println("date inside if: " + date);
                         stackPane.getChildren().add(date);
-                        List<Appointment> calendarActivities = calendarAppointmentMap.get(currentDate);
-                        System.out.println("calendarActivityMap.get(currentDate): " + calendarAppointmentMap.get(currentDate));
+
+                        if (String.valueOf(currentDate).length()<=1) {
+                            strDayOfMonth = "0" + (String.valueOf(currentDate));
+                        } else {
+                            strDayOfMonth = String.valueOf(currentDate);
+                        }
+
+                        List<Appointment> calendarActivities = calendarAppointmentMap.get(strDayOfMonth);
+                        System.out.println("calendarActivityMap.get(currentDate): " + calendarAppointmentMap.get(String.valueOf(currentDate)));
+                        System.out.println("strCurrentDate " + strDayOfMonth);
                         if(calendarActivities != null) {
                             createCalendarActivity(calendarActivities, rectangleHeight, rectangleWidth, stackPane);
                         }
