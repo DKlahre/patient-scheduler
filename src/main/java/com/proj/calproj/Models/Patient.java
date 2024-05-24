@@ -34,7 +34,9 @@ public class Patient {
     }
 
     public StringProperty firstNameProperty() {return firstName;}
+    public String strFirstName() {return firstName.get();}
     public StringProperty lastNameProperty() {return lastName;}
+    public String strLastName() {return  lastName.get();}
     public StringProperty usernameProperty() {return username;}
     public StringProperty passwordProperty() {return password;}
     public StringProperty genderProperty() {return gender;}

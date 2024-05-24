@@ -124,6 +124,28 @@ public class Model {
         return searchResult;
     }
 
+    public List<Patient> searchStrPatUsername(String username) {
+        List<Patient> searchResult = FXCollections.observableArrayList();
+        ResultSet resultSet = databaseDriver.searchPatUsername(username);
+        try {
+            String fName = resultSet.getString("FirstName");
+            String lName = resultSet.getString("LastName");
+            String password = resultSet.getString("Password");
+            String gender = resultSet.getString("Gender");
+            String[] birthDateParts = resultSet.getString("BirthDate").split("-");
+            LocalDate patBirthDate = LocalDate.of(Integer.parseInt(birthDateParts[0]), Integer.parseInt(birthDateParts[1]), Integer.parseInt(birthDateParts[2]));
+            String[] registerDateParts = resultSet.getString("RegisterDate").split("-");
+            LocalDate patRegisterDate = LocalDate.of(Integer.parseInt(registerDateParts[0]), Integer.parseInt(registerDateParts[1]), Integer.parseInt(registerDateParts[2]));
+            String patAddress = resultSet.getString("Address");
+            String patNotes = resultSet.getString("Notes");
+            String physician = resultSet.getString("Physician");
+            searchResult.add(new Patient(fName, lName, username, password, gender, patBirthDate, patRegisterDate, patAddress, patNotes, physician));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return searchResult;
+    }
+
     public ObservableList<Patient> searchPatUsernameEdit(String username, String notes) {
         ObservableList<Patient> searchResult = FXCollections.observableArrayList();
         ResultSet resultSet = databaseDriver.searchPatUsernameEdit(username, notes);
