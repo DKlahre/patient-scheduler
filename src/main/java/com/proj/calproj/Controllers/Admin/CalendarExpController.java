@@ -7,6 +7,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -69,7 +70,7 @@ public class CalendarExpController implements Initializable {
         double calendarWidth = calendar.getPrefWidth();
         double calendarHeight = calendar.getPrefHeight();
         double strokeWidth = 1;
-        double spacingH = calendar.getHgap();
+        double spacingH = 1.2;
         double spacingV = calendar.getVgap();
         String strDayOfMonth = null;
 
@@ -93,7 +94,7 @@ public class CalendarExpController implements Initializable {
                 rectangle.setStrokeWidth(strokeWidth);
                 double rectangleWidth = (calendarWidth/7) - strokeWidth - spacingH;
                 rectangle.setWidth(rectangleWidth);
-                double rectangleHeight = (calendarHeight/4.5) - strokeWidth - spacingV;
+                double rectangleHeight = (calendarHeight/5.2) - strokeWidth - spacingV;
                 rectangle.setHeight(rectangleHeight);
                 stackPane.getChildren().add(rectangle);
 
@@ -132,7 +133,9 @@ public class CalendarExpController implements Initializable {
         VBox calendarActivityBox = new VBox();
         for (int k = 0; k < calendarActivities.size(); k++) {
             if(k >= 2) {
-                Text moreActivities = new Text("...");
+                Text moreActivities = new Text("Click for more");
+                moreActivities.setStyle("-fx-font-size: 10px");
+                moreActivities.setFill(Color.BLUE);
                 calendarActivityBox.getChildren().add(moreActivities);
                 moreActivities.setOnMouseClicked(mouseEvent -> {
                     //On ... click print all activities for given date
@@ -141,15 +144,10 @@ public class CalendarExpController implements Initializable {
                 break;
             }
 
-
-
-
           //  Text text = new Text(calendarActivities.get(k).patUsernameProperty() + ", " + calendarActivities.get(k).appTimeProperty());
             Text text = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
-
             Text text2 = new Text( calendarActivities.get(k).appTimeProperty());
 
-           // Text text3 = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
             calendarActivityBox.getChildren().add(text);
             calendarActivityBox.getChildren().add(text2);
 
@@ -161,7 +159,7 @@ public class CalendarExpController implements Initializable {
         calendarActivityBox.setTranslateY((rectangleHeight / 2) * 0.20);
         calendarActivityBox.setMaxWidth(rectangleWidth * 0.8);
         calendarActivityBox.setMaxHeight(rectangleHeight * 0.65);
-        calendarActivityBox.setStyle("-fx-background-color:GRAY");
+        calendarActivityBox.setStyle("-fx-background-color:GRAY; -fx-font-size: 9px");
         stackPane.getChildren().add(calendarActivityBox);
     }
 
