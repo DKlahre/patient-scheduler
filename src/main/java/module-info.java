@@ -4,6 +4,7 @@ module com.proj.calproj {
     requires de.jensd.fx.glyphs.fontawesome;
     requires java.sql;
     requires org.xerial.sqlitejdbc;
+    requires java.desktop;
 
     opens com.proj.calproj to javafx.fxml;
     exports com.proj.calproj;

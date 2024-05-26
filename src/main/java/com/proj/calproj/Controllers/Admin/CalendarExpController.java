@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+import javax.swing.*;
 import java.net.URL;
 import java.time.ZonedDateTime;
 import java.util.*;
@@ -24,6 +25,7 @@ import java.util.*;
 import static java.lang.Math.random;
 import static javafx.scene.paint.Color.RED;
 import static javafx.scene.paint.Color.color;
+
 
 public class CalendarExpController implements Initializable {
 
@@ -38,6 +40,8 @@ public class CalendarExpController implements Initializable {
     private Patient patient;
 
     private String patFirstAndLastName;
+    JOptionPane JOptionPane = null;
+    //List<String> newCalendarActivities = null;
 
 
     @Override
@@ -139,15 +143,15 @@ public class CalendarExpController implements Initializable {
         VBox calendarExpandBox = new VBox();
         for (int k = 0; k < calendarActivities.size(); k++) {
             if(k >= 2) {
-                Text moreActivities = new Text("Click for more");
+                Text moreActivities = new Text("  Click for more...");
                 moreActivities.setStyle("-fx-font-size: 10px");
                 moreActivities.setFill(Color.BLUE);
                 calendarExpandBox.getChildren().add(moreActivities);
                 calendarActivityBox.getChildren().add(calendarExpandBox);
-                calendarExpandBox.setOnMouseClicked(mouseEvent -> {
-                    //On ... click print all activities for given date
-                    System.out.println(calendarActivities);
-                });
+//                calendarExpandBox.setOnMouseClicked(mouseEvent -> {
+//                    System.out.println(calendarActivities.get(0).patUsernameProperty());
+//                });
+                calendarExpandBox.setOnMouseClicked(mouseEvent -> expandActivities(calendarActivities));
                 break;
             }
 
@@ -167,8 +171,18 @@ public class CalendarExpController implements Initializable {
         calendarActivityBox.setMaxWidth(rectangleWidth * 0.8);
         calendarActivityBox.setMaxHeight(rectangleHeight * 0.65);
         calendarActivityBox.setStyle("-fx-background-color:GRAY; -fx-font-size: 9px");
-        calendarExpandBox.setStyle("-fx-background-color: RED");
+        calendarExpandBox.setStyle("-fx-background-color: #ED6918");
         stackPane.getChildren().add(calendarActivityBox);
+    }
+
+    private void expandActivities (List<Appointment> calendarActivities) {
+            String stuffString = "";
+        for (int i = 0; i < calendarActivities.size(); i ++ ) {
+            System.out.println(getPatientName(calendarActivities.get(i).patUsernameProperty()));
+            System.out.println(calendarActivities.get(i).appTimeProperty());
+            stuffString = stuffString + calendarActivities.get(i).appTimeProperty() + " - " + getPatientName(calendarActivities.get(i).patUsernameProperty()) + "\n" ;
+        }
+        JOptionPane.showMessageDialog(null, stuffString);
     }
 
     private Map<String, List<Appointment>> createCalendarMap(List<Appointment> appointmentList) {

@@ -27,4 +27,5 @@ public class Appointment {
     public StringProperty appMonthAndYearProperty() {return appMonthAndYear;}
     public String appTimeProperty() {
         return appTime.get();}
+
 }
