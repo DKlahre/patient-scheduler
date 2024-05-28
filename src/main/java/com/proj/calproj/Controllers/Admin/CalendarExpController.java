@@ -38,7 +38,7 @@ public class CalendarExpController implements Initializable {
     int []intTimeSubstring  = new int[200];
     int []newIntArray = new int[200];
     int []timeArray = new int[200];
-    String []tempUsernameArray = new String[20];
+    String []tempNameArray = new String[20];
 
 
     @Override
@@ -218,6 +218,9 @@ public class CalendarExpController implements Initializable {
 
     private void expandActivities (List<Appointment> calendarActivities, int[] timeArray) {
             String concatString = "";
+//            for (int h = 0; h < calendarActivities.size(); h++ ) {
+//                tempNameArray[h] = getPatientName(calendarActivities.get(h).patUsernameProperty());
+//            }
         for (int i = 0; i < calendarActivities.size(); i++ ) {
             for (int j = 0; j < calendarActivities.size(); j++) {
                 String strTimeSubstringA = calendarActivities.get(j).appTimeProperty().substring(0,2);
@@ -226,14 +229,22 @@ public class CalendarExpController implements Initializable {
                 int intTemp = Integer.parseInt(strTimeSubstring);
                 System.out.println("timeArray[i]: " + timeArray[i]);
               //  System.out.println("intTemp: " + intTemp);
-                tempUsernameArray[i] = getPatientName(calendarActivities.get(j).patUsernameProperty());
-                if ((timeArray[i] == intTemp) ) {
-                   // System.out.println("timeArray[i]: " + timeArray[i]);
+
+               // System.out.println("tempNameArray[i]: " + tempNameArray[i]);
+               // System.out.println("getPatientName: " + getPatientName(calendarActivities.get(i).patUsernameProperty()));
+                if ((timeArray[i] == intTemp) && (!(Arrays.stream(tempNameArray).toList().toString()).contains(getPatientName(calendarActivities.get(i).patUsernameProperty() )))) {
+                        tempNameArray[i] = getPatientName(calendarActivities.get(i).patUsernameProperty());
+                    // System.out.println("timeArray[i]: " + timeArray[i]);
                     concatString = concatString + strTimeSubstringA + ":" + strTimeSubstringB + " - " + getPatientName(calendarActivities.get(j).patUsernameProperty()) + "\n" ;
                 }
             }
+
         }
+        // clear array
+
         JOptionPane.showMessageDialog(null, concatString);
+//        for (int r = 0; r < tempNameArray.length - 1; r++){
+//            tempNameArray[r] = "";}
     }
 
     private Map<String, List<Appointment>> createCalendarMap(List<Appointment> appointmentList) {
