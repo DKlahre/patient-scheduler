@@ -34,11 +34,16 @@ public class CalendarExpController implements Initializable {
     private Patient patient;
     private String patFirstAndLastName;
     JOptionPane JOptionPane = null;
-    //List<String> newCalendarActivities = null;
     int []intTimeSubstring  = new int[200];
-    int []newIntArray = new int[200];
-    int []timeArray = new int[200];
+    Integer []integerTimeString = new Integer[200];
     String []tempNameArray = new String[20];
+    int []lastValueArray = new int[0];
+    Integer lastValue;
+    Integer compareNum;
+
+    String marker2 = null;
+    String marker = null;
+    Boolean processed = false;
 
 
     @Override
@@ -142,10 +147,6 @@ public class CalendarExpController implements Initializable {
         int sortedTimes[] = new int[200];
         int testArray[] = new int[200];
 
-            // Sort appointment times in each array list
-            bubbleSort(calendarActivities);
-
-
         for (int k = 0; k < calendarActivities.size(); k++) {
 
             if(k >= 2) {
@@ -154,18 +155,54 @@ public class CalendarExpController implements Initializable {
                 moreActivities.setFill(Color.BLUE);
                 calendarExpandBox.getChildren().add(moreActivities);
                 calendarActivityBox.getChildren().add(calendarExpandBox);
-                calendarExpandBox.setOnMouseClicked(mouseEvent -> expandActivities(calendarActivities, timeArray));
+                calendarExpandBox.setOnMouseClicked(mouseEvent -> bubbleSort(calendarActivities));
                 break;
             }
 
-                Text text = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
-                Text text2 = new Text(calendarActivities.get(k).appTimeProperty());
-                calendarActivityBox.getChildren().add(text);
-                calendarActivityBox.getChildren().add(text2);
-                text.setOnMouseClicked(mouseEvent -> {
-                    //On Text clicked
-                    System.out.println(text.getText());
-                });
+
+            Text text = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
+            Text text2 = new Text(calendarActivities.get(k).appTimeProperty());
+            calendarActivityBox.getChildren().add(text);
+            calendarActivityBox.getChildren().add(text2);
+
+//            if ( calendarActivities.size() == 1) {
+//                Text text = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
+//                Text text2 = new Text(calendarActivities.get(k).appTimeProperty());
+//                calendarActivityBox.getChildren().add(text);
+//                calendarActivityBox.getChildren().add(text2);
+//            }
+//
+//            if (k < 2 && calendarActivities.size() != 1) {
+//
+//                Text text = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
+//                Text text2 = new Text(calendarActivities.get(k).appTimeProperty());
+//                calendarActivityBox.getChildren().add(text);
+//                calendarActivityBox.getChildren().add(text2);
+//
+//            }
+
+
+
+
+
+
+
+//                        Text text = new Text(getPatientName(calendarActivities.get(m).patUsernameProperty()));
+//                        Text text2 = new Text(calendarActivities.get(m).appTimeProperty());
+//                        calendarActivityBox.getChildren().add(text);
+//                        calendarActivityBox.getChildren().add(text2);
+
+
+
+
+
+//            if ((calendarActivities.size() == 0) || calendarActivities.equals(null)) {
+//                Text text = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
+//                Text text2 = new Text(calendarActivities.get(k).appTimeProperty());
+//                calendarActivityBox.getChildren().add(text);
+//                calendarActivityBox.getChildren().add(text2);
+//            }
+
 
 
         }
@@ -178,7 +215,7 @@ public class CalendarExpController implements Initializable {
         stackPane.getChildren().add(calendarActivityBox);
     }
 
-    private int[] bubbleSort(List<Appointment> calendarActivities) {
+    private void bubbleSort(List<Appointment> calendarActivities) {
 
         for (int k = 0; k < calendarActivities.size(); k++) {
             String strTimeSubstringA = calendarActivities.get(k).appTimeProperty().substring(0,2);
@@ -191,16 +228,10 @@ public class CalendarExpController implements Initializable {
                 for (int i = 0; i < calendarActivities.size() - 1; i++)
                     for (int j = 0; j < calendarActivities.size() - i - 1; j++)
                         if (intTimeSubstring[j] > intTimeSubstring[j + 1]) {
-                            // swap temp and arr[i]
                             int temp = intTimeSubstring[j];
                             intTimeSubstring[j] = intTimeSubstring[j + 1];
                             intTimeSubstring[j + 1] = temp;
                         }
-                System.out.println("Inside bubble sort intTimeSubstring[0] " + intTimeSubstring[0]);
-                System.out.println("Inside bubble sort intTimeSubstring[1] " + intTimeSubstring[1]);
-                System.out.println("Inside bubble sort intTimeSubstring[2] " + intTimeSubstring[2]);
-                System.out.println("Inside bubble sort intTimeSubstring[3] " + intTimeSubstring[3]);
-                System.out.println("Inside bubble sort intTimeSubstring[4] " + intTimeSubstring[4]);
 
                 //put sorted times into alert box
                 expandActivities(calendarActivities, intTimeSubstring);
@@ -209,42 +240,31 @@ public class CalendarExpController implements Initializable {
                 for (int r = 0; r < intTimeSubstring.length - 1; r++){
                     intTimeSubstring[r] = 0;}
 
-                System.out.println("============");
-
             }
         }
-        return intTimeSubstring;
     }
 
+
+
+
     private void expandActivities (List<Appointment> calendarActivities, int[] timeArray) {
-            String concatString = "";
-//            for (int h = 0; h < calendarActivities.size(); h++ ) {
-//                tempNameArray[h] = getPatientName(calendarActivities.get(h).patUsernameProperty());
-//            }
+
+        String concatString = "";
+
         for (int i = 0; i < calendarActivities.size(); i++ ) {
             for (int j = 0; j < calendarActivities.size(); j++) {
                 String strTimeSubstringA = calendarActivities.get(j).appTimeProperty().substring(0,2);
                 String strTimeSubstringB = calendarActivities.get(j).appTimeProperty().substring(3,5);
                 String strTimeSubstring = strTimeSubstringA + strTimeSubstringB;
                 int intTemp = Integer.parseInt(strTimeSubstring);
-                System.out.println("timeArray[i]: " + timeArray[i]);
-              //  System.out.println("intTemp: " + intTemp);
-
-               // System.out.println("tempNameArray[i]: " + tempNameArray[i]);
-               // System.out.println("getPatientName: " + getPatientName(calendarActivities.get(i).patUsernameProperty()));
-                if ((timeArray[i] == intTemp) && (!(Arrays.stream(tempNameArray).toList().toString()).contains(getPatientName(calendarActivities.get(i).patUsernameProperty() )))) {
-                        tempNameArray[i] = getPatientName(calendarActivities.get(i).patUsernameProperty());
-                    // System.out.println("timeArray[i]: " + timeArray[i]);
+                if ((timeArray[i] == intTemp) ) {
+                    tempNameArray[i] = getPatientName(calendarActivities.get(i).patUsernameProperty());
                     concatString = concatString + strTimeSubstringA + ":" + strTimeSubstringB + " - " + getPatientName(calendarActivities.get(j).patUsernameProperty()) + "\n" ;
                 }
             }
-
         }
-        // clear array
 
         JOptionPane.showMessageDialog(null, concatString);
-//        for (int r = 0; r < tempNameArray.length - 1; r++){
-//            tempNameArray[r] = "";}
     }
 
     private Map<String, List<Appointment>> createCalendarMap(List<Appointment> appointmentList) {
@@ -252,14 +272,10 @@ public class CalendarExpController implements Initializable {
         Map<String, List<Appointment>> calendarAppointmentMap = new HashMap<>();
 
         for (Appointment appointment: appointmentList) {
-
             if(!calendarAppointmentMap.containsKey(appointment.appDayOfMonthProperty().getValue())){
                 calendarAppointmentMap.put((appointment.appDayOfMonthProperty().getValue()), List.of(appointment));
             } else {
                 List<Appointment> OldListByDate = calendarAppointmentMap.get(appointment.appDayOfMonthProperty().getValue());
-//                System.out.println("calendarAppointmentMap.get(appointment.appDayOfMonthProperty().getValue()) " + calendarAppointmentMap.get(appointment.appDayOfMonthProperty().getValue()));
-//                System.out.println("appointment.appDayOfMonthProperty().getValue() " + appointment.appDayOfMonthProperty().getValue());
-//                System.out.println("OldListByDate: " + OldListByDate);
                 List<Appointment> newList = new ArrayList<>(OldListByDate);
                 newList.add(appointment);
                 calendarAppointmentMap.put((appointment.appDayOfMonthProperty().getValue()), newList);
@@ -276,8 +292,6 @@ public class CalendarExpController implements Initializable {
         String strDateFocus = dateFocus.toString();
         String strMonthYear = strDateFocus.substring(0, 7);
         String strDayOfMonth = strDateFocus.substring(8, 10);
-//        String strTimeOfDay = strDateFocus.substring(11,15);
-//        System.out.println("strTimeOfDay: " + strTimeOfDay);
         List<Appointment> searchResults = Model.getInstance().searchAppByMonthAndYear(strMonthYear);
 
         return createCalendarMap(searchResults);

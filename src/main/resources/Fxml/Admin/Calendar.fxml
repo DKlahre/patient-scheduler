@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="810.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj.calproj.Controllers.Admin.CalendarController">
-    <Text layoutX="27.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Scheduler" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+    <Text layoutX="27.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Notes" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
         <font>
           <Font size="25.0" />
         </font>
@@ -22,7 +22,7 @@
          </Text>
       </children>
    </HBox>
-   <TableView fx:id="patientTableView" layoutX="20.0" layoutY="129.0" prefHeight="218.0" prefWidth="807.0" styleClass="search_container" stylesheets="@../../Styles/SearchPatient.css">
+   <TableView fx:id="patientTableView" layoutX="20.0" layoutY="129.0" prefHeight="376.0" prefWidth="807.0" styleClass="search_container" stylesheets="@../../Styles/SearchPatient.css">
      <columns>
        <TableColumn fx:id="firstName_col" prefWidth="89.60000419616699" text="First name" />
        <TableColumn fx:id="lastName_col" prefWidth="86.4000015258789" text="Last name" />

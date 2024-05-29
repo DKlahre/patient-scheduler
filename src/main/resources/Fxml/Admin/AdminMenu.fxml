@@ -15,18 +15,21 @@
       <VBox layoutX="8.0" layoutY="91.0" prefHeight="400.0" prefWidth="158.0" styleClass="menu_container" AnchorPane.topAnchor="100.0">
          <Button fx:id="search_patient_btn" alignment="CENTER" mnemonicParsing="false" prefWidth="160.0" text="Find Patient/Set Appt">
             <graphic>
-               <FontAwesomeIconView glyphName="EDIT" size="20" />
+               <FontAwesomeIconView glyphName="SEARCH" size="20" />
             </graphic></Button>
          <Button fx:id="create_patient_btn" mnemonicParsing="false" text="Create Patient">
             <graphic>
                <FontAwesomeIconView glyphName="USER" size="22" />
             </graphic></Button>
-         <Button fx:id="calendar_btn" mnemonicParsing="false" text="Calendar">
+         <Button fx:id="calendar_btn" mnemonicParsing="false" text="Edit Notes">
             <graphic>
-               <FontAwesomeIconView glyphName="TH" size="19" />
+               <FontAwesomeIconView glyphName="EDIT" size="19" />
             </graphic>
          </Button>
-         <Button fx:id="calendarExp_btn" mnemonicParsing="false" text="CalendarExp" />
+         <Button fx:id="calendarExp_btn" mnemonicParsing="false" text="Calendar">
+            <graphic>
+               <FontAwesomeIconView glyphName="TH" size="19" />
+            </graphic></Button>
          <Button fx:id="patients_btn" mnemonicParsing="false" text="Patient List">
             <graphic>
                <FontAwesomeIconView glyphName="LIST" size="18" />
