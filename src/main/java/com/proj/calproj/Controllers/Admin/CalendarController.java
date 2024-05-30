@@ -56,27 +56,10 @@ public class CalendarController implements Initializable {
 
     patientTableView.setEditable(true);
     patientTableView.setItems(Model.getInstance().getPatients());
-
     firstName_col.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-//    firstName_col.setCellFactory(TextFieldTableCell.forTableColumn());
-//    firstName_col.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Patient, String>>() {
-//      @Override
-//      public void handle(TableColumn.CellEditEvent<Patient, String> cellEditEvent) {
-//        Patient patient = cellEditEvent.getRowValue();
-//        patient.firstNameProperty().setValue(cellEditEvent.getNewValue());
-//        System.out.println("patient.firstNameProperty().get() " + patient.firstNameProperty().get());
-//        Model.getInstance().searchPatUsernameEdit(patient.usernameProperty().get(), patient.firstNameProperty().get());
-//      }
-//    });
-
     lastName_col.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-   // username_col.setCellValueFactory(new PropertyValueFactory<>("username"));
-   // password_col.setCellValueFactory(new PropertyValueFactory<>("password"));
     gender_col.setCellValueFactory(new PropertyValueFactory<>("gender"));
     birthDate_col.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
-   // registerDate_col.setCellValueFactory(new PropertyValueFactory<>("registerDate"));
-   // address_col.setCellValueFactory(new PropertyValueFactory<>("address"));
-
     notes_col.setCellValueFactory(new PropertyValueFactory<>("notes"));
     notes_col.setCellFactory(TextFieldTableCell.forTableColumn());
     notes_col.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Patient, String>>() {

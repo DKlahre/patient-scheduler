@@ -24,7 +24,6 @@ public class SearchPatientController implements Initializable {
     public Button birthDateSearch_btn;
     public ListView<Patient> patient_listview;
     public DatePicker birthDate_pkr;
-
     private Patient patient;
 
     @Override

@@ -53,23 +53,6 @@ public class RawPatientCellController implements Initializable {
         address_col.textProperty().bind(patient.addressProperty());
         notes_col.textProperty().bind(patient.notesProperty());
 
-//        pat_table_view.setEditable(true);
-//
-//        firstName_col.setCellValueFactory(c -> new SimpleStringProperty(new String("123")));
-
-//        TableColumn firstName_col = new TableColumn("First Name");
-//        //firstNameCol.setMinWidth(100);
-//        firstName_col.setCellValueFactory(
-//                new PropertyValueFactory<>("patFirstName"));
-//
-//        pat_table_view.getColumns().addAll(firstName_col, lastName_col, username_col, password_col, gender_col);
-//
-
-
-
-
-
-
 
         TableView<Patient> pat_table_view = new TableView<>();
         LocalDate bDate = LocalDate.of(Integer.parseInt("2012"), Integer.parseInt("03"), Integer.parseInt("10"));

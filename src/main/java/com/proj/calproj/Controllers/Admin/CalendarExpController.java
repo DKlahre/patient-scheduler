@@ -165,46 +165,6 @@ public class CalendarExpController implements Initializable {
             calendarActivityBox.getChildren().add(text);
             calendarActivityBox.getChildren().add(text2);
 
-//            if ( calendarActivities.size() == 1) {
-//                Text text = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
-//                Text text2 = new Text(calendarActivities.get(k).appTimeProperty());
-//                calendarActivityBox.getChildren().add(text);
-//                calendarActivityBox.getChildren().add(text2);
-//            }
-//
-//            if (k < 2 && calendarActivities.size() != 1) {
-//
-//                Text text = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
-//                Text text2 = new Text(calendarActivities.get(k).appTimeProperty());
-//                calendarActivityBox.getChildren().add(text);
-//                calendarActivityBox.getChildren().add(text2);
-//
-//            }
-
-
-
-
-
-
-
-//                        Text text = new Text(getPatientName(calendarActivities.get(m).patUsernameProperty()));
-//                        Text text2 = new Text(calendarActivities.get(m).appTimeProperty());
-//                        calendarActivityBox.getChildren().add(text);
-//                        calendarActivityBox.getChildren().add(text2);
-
-
-
-
-
-//            if ((calendarActivities.size() == 0) || calendarActivities.equals(null)) {
-//                Text text = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
-//                Text text2 = new Text(calendarActivities.get(k).appTimeProperty());
-//                calendarActivityBox.getChildren().add(text);
-//                calendarActivityBox.getChildren().add(text2);
-//            }
-
-
-
         }
 
         calendarActivityBox.setTranslateY((rectangleHeight / 2) * 0.20);

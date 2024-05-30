@@ -19,7 +19,6 @@ public class AdminController implements Initializable {
                 case CALENDAR -> admin_parent.setCenter(Model.getInstance().getViewFactory().getCalendarView());
                 case CALENDAREXP -> admin_parent.setCenter(Model.getInstance().getViewFactory().getCalendarExpView());
                 default -> admin_parent.setCenter(Model.getInstance().getViewFactory().getCreatePatientView());
-                // case CREATE_PATIENT -> admin_parent.setCenter(Model.getInstance().getViewFactory().getCreatePatientView());
             }
         } );
     }

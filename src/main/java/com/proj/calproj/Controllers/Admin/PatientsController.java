@@ -21,7 +21,6 @@ public class PatientsController implements Initializable {
 
     private void initPatientsList() {
         if (Model.getInstance().getPatients().isEmpty()){
-          //  Model.getInstance().setPatientsToNull();
             Model.getInstance().setPatients();
         }
     }

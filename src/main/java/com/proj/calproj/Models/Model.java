@@ -3,7 +3,6 @@ package com.proj.calproj.Models;
 import com.proj.calproj.Views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.time.LocalDate;
@@ -15,7 +14,6 @@ public class Model {
     private boolean physicianLoginSuccessFlag;
     private boolean adminLoginSuccessFlag;
     private final DatabaseDriver databaseDriver;
-
     private  ObservableList<Patient> patients;
 
 
@@ -52,7 +50,6 @@ public class Model {
             e.printStackTrace();
         }
     }
-
 
     public void setPatients(){
         ResultSet resultSet = databaseDriver.getAllPatientsData();
@@ -230,25 +227,22 @@ public class Model {
     }
 
     public List<Appointment> searchAppByMonthAndYear(String monthAndYear) {
-        System.out.println("monthAdnYear(Model): " + monthAndYear);
+     //   System.out.println("monthAdnYear(Model): " + monthAndYear);
         List<Appointment> searchResult = FXCollections.observableArrayList();
         ResultSet resultSet = databaseDriver.searchAppMonthYear(monthAndYear);
 //        ResultSet resultSet2;
         try {
             while (resultSet.next()) {
                 String physUsername = resultSet.getString("PhysUsername");
-                System.out.println("physUsername: whooi " + physUsername);
+             //   System.out.println("physUsername: whooi " + physUsername);
                 String patUsername = resultSet.getString("PatUsername");
-                System.out.println("patUsername: whooi " + patUsername);
+             //   System.out.println("patUsername: whooi " + patUsername);
                 String appDayOfMonth = resultSet.getString("AppDayOfMonth");
-                System.out.println("appDayOfMonth: " + appDayOfMonth);
+             //   System.out.println("appDayOfMonth: " + appDayOfMonth);
                 String appMonthAndYear = resultSet.getString("AppMonthAndYear");
-                System.out.println("appMonthAndYear: " + appMonthAndYear);
+             //   System.out.println("appMonthAndYear: " + appMonthAndYear);
                 String appTime = resultSet.getString("AppTime");
-                System.out.println("appTime: " + appTime);
-//            resultSet2 = databaseDriver.searchPatMonthYear(patUsername);
-//            String fName = resultSet2.getString("FirstName");
-//            String lName = resultSet2.getString("LastName");
+             //   System.out.println("appTime: " + appTime);
                 searchResult.add(new Appointment(physUsername, patUsername, appDayOfMonth, appMonthAndYear, appTime));
             }
         } catch (Exception e) {

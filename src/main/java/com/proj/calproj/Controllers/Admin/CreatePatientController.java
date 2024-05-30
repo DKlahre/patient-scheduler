@@ -26,7 +26,6 @@ public class CreatePatientController implements Initializable {
     public CheckBox username_box;
     public Label username_lbl;
     public TextArea notes_ta;
-   // public TextField assignedPhysician_fld;
     public ChoiceBox physician_selector;
     private String username;
     private boolean createPatientFlag = false;
@@ -80,16 +79,12 @@ public class CreatePatientController implements Initializable {
     private void createPatient() {
         String fName = fName_fld.getText();
         String lName = lName_fld.getText();
-      //  String username = username_lbl.getText();
         String password = password_fld.getText();
         String gender = gender_fld.getText();
         myDate = birthDate_pkr.getValue();
         String birthDate = myDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-        //String birthDate = birth_date_fld.getText();
         String address = address_fld.getText();
         String notes = notes_ta.getText();
-
 
         Model.getInstance().getDatabaseDriver().createPatient(fName, lName, username, password, gender, birthDate, LocalDate.now(), address, notes, assignedPhysician);
         Model.getInstance().setPatients();
