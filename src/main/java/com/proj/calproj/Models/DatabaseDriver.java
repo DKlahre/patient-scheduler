@@ -120,17 +120,44 @@ public class DatabaseDriver {
         return resultSet;
     }
 
+
+    public ResultSet getAllAppointmentsData() {
+        Statement statement;
+        ResultSet resultSet = null;
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM Appointments;");
+            System.out.println("Inside: getAllAppointmentsData()");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
+
     public String deletePatient(String username) {
         Statement statement;
         Statement statement2;
+        Statement statement3;
+        Statement statement4;
+
         ResultSet resultSet;
+        ResultSet resultSet2;
+        ResultSet resultSet4 = null;
         String deletedUsername = null;
         try {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM Patients WHERE Username ='"+username+"';");
+            deletedUsername = resultSet.getString("Username");
+            statement4 = this.conn.createStatement();
+            resultSet4 = statement4.executeQuery("SELECT * FROM Appointments WHERE PatUsername ='"+username+"';");
+
+            if (resultSet4 != null) {
+                int deletedRows4 = statement4.executeUpdate("DELETE FROM Appointments WHERE PatUsername ='"+ username+"';");
+            }
             statement2 = this.conn.createStatement();
             int deletedRows = statement2.executeUpdate("DELETE FROM Patients WHERE Username ='"+ username+"';");
-            deletedUsername = resultSet.getString("Username");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -145,7 +172,7 @@ public class DatabaseDriver {
             statement = this.conn.createStatement();
             int editedRow = statement.executeUpdate("UPDATE Patients SET Notes = '"+notes+"' WHERE Username ='"+ username+"';");
             statement2 = this.conn.createStatement();
-            resultSet = statement2.executeQuery("SELECT * FROM Patients WHERE Username ='"+username+"';");
+            resultSet = statement2.executeQuery("SELECT * FROM Patients WHERE Username ='"+username+" ';");
             //    deletedUsername = resultSet.getString("Username");
         } catch (SQLException e) {
             e.printStackTrace();

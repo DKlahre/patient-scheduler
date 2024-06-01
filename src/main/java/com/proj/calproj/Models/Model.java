@@ -15,6 +15,7 @@ public class Model {
     private boolean adminLoginSuccessFlag;
     private final DatabaseDriver databaseDriver;
     private  ObservableList<Patient> patients;
+    private ObservableList<Appointment> appointments;
 
 
     public Model() {
@@ -74,11 +75,43 @@ public class Model {
         }
     }
 
+
+    public void setApppointments(){
+        ResultSet resultSet = databaseDriver.getAllAppointmentsData();
+        try {
+            while (resultSet.next()) {
+
+                String physUsername = resultSet.getString("PhysUsername");
+                String patUsername = resultSet.getString("PatUsername");
+                String appDayOfMonth = resultSet.getString("AppDayOfMonth");
+                String appMonthAndYear = resultSet.getString("AppMonthAndYear");
+                String appTime = resultSet.getString("AppTime");
+                appointments.add(new Appointment(physUsername, patUsername, appDayOfMonth, appMonthAndYear, appTime));
+                System.out.println("Inside setApppointments()");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
     public void clearPatientsList(){
         ResultSet resultSet = null;
 
         try {
             patients.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void clearAppointmentsList(){
+        ResultSet resultSet = null;
+
+        try {
+            appointments.clear();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -234,15 +267,10 @@ public class Model {
         try {
             while (resultSet.next()) {
                 String physUsername = resultSet.getString("PhysUsername");
-             //   System.out.println("physUsername: whooi " + physUsername);
                 String patUsername = resultSet.getString("PatUsername");
-             //   System.out.println("patUsername: whooi " + patUsername);
                 String appDayOfMonth = resultSet.getString("AppDayOfMonth");
-             //   System.out.println("appDayOfMonth: " + appDayOfMonth);
                 String appMonthAndYear = resultSet.getString("AppMonthAndYear");
-             //   System.out.println("appMonthAndYear: " + appMonthAndYear);
                 String appTime = resultSet.getString("AppTime");
-             //   System.out.println("appTime: " + appTime);
                 searchResult.add(new Appointment(physUsername, patUsername, appDayOfMonth, appMonthAndYear, appTime));
             }
         } catch (Exception e) {

@@ -3,6 +3,7 @@ package com.proj.calproj.Controllers.Admin;
 import com.proj.calproj.Models.Appointment;
 import com.proj.calproj.Models.Model;
 import com.proj.calproj.Models.Patient;
+import com.proj.calproj.Views.AdminMenuOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -48,9 +49,16 @@ public class CalendarExpController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+       // Model.getInstance().setApppointments();
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
         addListeners();
+        drawCalendar();
+    }
+
+    public void test(){
+        dateFocus = ZonedDateTime.now();
+        calendar.getChildren();
         drawCalendar();
     }
 
@@ -71,10 +79,12 @@ public class CalendarExpController implements Initializable {
     private void addListeners(){
         forward_btn.setOnAction(event -> forwardOneMonth());
         backward_btn.setOnAction(event -> backOneMonth());
+      //  Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.CALENDAREXP);
     }
 
 
     private void drawCalendar(){
+
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));
 
