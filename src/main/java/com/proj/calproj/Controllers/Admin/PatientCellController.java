@@ -48,10 +48,8 @@ public class PatientCellController implements Initializable {
                 Model.getInstance().clearPatientsList();
               //  Model.getInstance().clearAppointmentsList();
                 Model.getInstance().setPatients();
-
                 Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.PATIENTS);
-
-              //  Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.CALENDAREXP);
+               // Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.CALENDAREXP);
                 // Model.getInstance().getViewFactory().getCalendarExpView();
             System.out.println("Inside onDelete() in PatientCellController()");
             }

@@ -18,7 +18,6 @@ import java.util.ResourceBundle;
 public class SearchPatientController implements Initializable {
     public TextField username_fld;
     public TextField lastName_fld;
-    public TextField birthDate_fld;
     public Button usernameSearch_btn;
     public Button lastNameSearch_btn;
     public Button birthDateSearch_btn;

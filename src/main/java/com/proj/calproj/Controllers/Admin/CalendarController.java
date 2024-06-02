@@ -46,7 +46,7 @@ public class CalendarController implements Initializable {
   public TableColumn notes_col;
   public TableView patientTableView;
   private  Patient patient;
-  private String hey;
+//  private String hey;
 
 
   @Override
@@ -62,15 +62,21 @@ public class CalendarController implements Initializable {
     birthDate_col.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
     notes_col.setCellValueFactory(new PropertyValueFactory<>("notes"));
     notes_col.setCellFactory(TextFieldTableCell.forTableColumn());
-    notes_col.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Patient, String>>() {
-      @Override
-      public void handle(TableColumn.CellEditEvent<Patient, String> cellEditEvent) {
-        Patient patient = cellEditEvent.getRowValue();
-        patient.notesProperty().setValue(cellEditEvent.getNewValue());
-        Model.getInstance().searchPatUsernameEdit(patient.usernameProperty().get(), patient.notesProperty().get());
-      }
 
-    });
+    try {
+      notes_col.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Patient, String>>() {
+        @Override
+        public void handle(TableColumn.CellEditEvent<Patient, String> cellEditEvent) {
+          Patient patient = cellEditEvent.getRowValue();
+          patient.notesProperty().setValue(cellEditEvent.getNewValue());
+          Model.getInstance().searchPatUsernameEdit(patient.usernameProperty().get(), patient.notesProperty().get());
+
+        }
+      });
+    } catch(Exception e) {
+      System.out.println("Inside setOnEditCommit() ");
+    }
+
   }
 
   private void initPatientsList() {

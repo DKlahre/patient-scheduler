@@ -28,7 +28,7 @@ public class CreatePatientController implements Initializable {
     public TextArea notes_ta;
     public ChoiceBox physician_selector;
     private String username;
-    private boolean createPatientFlag = false;
+//    private boolean createPatientFlag = false;
     private String assignedPhysician;
     private LocalDate myDate;
     public DatePicker birthDate_pkr;

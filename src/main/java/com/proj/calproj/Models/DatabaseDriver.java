@@ -115,6 +115,7 @@ public class DatabaseDriver {
             statement = this.conn.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM Patients;");
         } catch (SQLException e) {
+            System.out.println("We got a problem here - getAllPatientsData()");
             e.printStackTrace();
         }
         return resultSet;
@@ -173,8 +174,10 @@ public class DatabaseDriver {
             int editedRow = statement.executeUpdate("UPDATE Patients SET Notes = '"+notes+"' WHERE Username ='"+ username+"';");
             statement2 = this.conn.createStatement();
             resultSet = statement2.executeQuery("SELECT * FROM Patients WHERE Username ='"+username+" ';");
+
             //    deletedUsername = resultSet.getString("Username");
         } catch (SQLException e) {
+            System.out.println("We got a problem here - searchPatUsernameEdit()");
             e.printStackTrace();
         }
         return resultSet;

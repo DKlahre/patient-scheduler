@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 public class AdminMenuController implements Initializable {
 
-    public Button set_appointment_btn;
+//    public Button set_appointment_btn;
     public Button create_patient_btn;
     public Button logout_btn;
     public Button search_patient_btn;

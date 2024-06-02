@@ -18,13 +18,6 @@ import java.util.ResourceBundle;
 
 public class RawPatientCellController implements Initializable {
 
-    public Label fName_lbl;
-    public Label lName_lbl;
-    public Label gender_lbl;
-    public Label bDate_lbl;
-    public Label address_lbl;
-    public Label notes_lbl;
-    public Button delete_btn;
     private final Patient patient;
     public TableView pat_table_view;
     public TableColumn firstName_col;
@@ -150,9 +143,6 @@ public class RawPatientCellController implements Initializable {
         TextField physician = new TextField();
         physician.setMaxWidth(column10.getPrefWidth());
         physician.setPromptText("Physician");
-
-
-
 
     }
 

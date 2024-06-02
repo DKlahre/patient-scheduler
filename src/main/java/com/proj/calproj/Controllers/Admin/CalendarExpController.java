@@ -4,6 +4,7 @@ import com.proj.calproj.Models.Appointment;
 import com.proj.calproj.Models.Model;
 import com.proj.calproj.Models.Patient;
 import com.proj.calproj.Views.AdminMenuOptions;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -35,30 +36,24 @@ public class CalendarExpController implements Initializable {
     private Patient patient;
     private String patFirstAndLastName;
     JOptionPane JOptionPane = null;
-    int []intTimeSubstring  = new int[200];
-    Integer []integerTimeString = new Integer[200];
-    String []tempNameArray = new String[20];
-    int []lastValueArray = new int[0];
+    int[] intTimeSubstring = new int[200];
+    Integer[] integerTimeString = new Integer[200];
+    String[] tempNameArray = new String[20];
+    int[] lastValueArray = new int[0];
     Integer lastValue;
-    Integer compareNum;
 
-    String marker2 = null;
-    String marker = null;
-    Boolean processed = false;
+//    Integer compareNum;
+//    String marker2 = null;
+//    String marker = null;
+//    Boolean processed = false;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       // Model.getInstance().setApppointments();
+        // Model.getInstance().setApppointments();
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
         addListeners();
-        drawCalendar();
-    }
-
-    public void test(){
-        dateFocus = ZonedDateTime.now();
-        calendar.getChildren();
         drawCalendar();
     }
 
@@ -76,77 +71,78 @@ public class CalendarExpController implements Initializable {
         drawCalendar();
     }
 
-    private void addListeners(){
+    private void addListeners() {
         forward_btn.setOnAction(event -> forwardOneMonth());
         backward_btn.setOnAction(event -> backOneMonth());
-      //  Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.CALENDAREXP);
     }
 
 
-    private void drawCalendar(){
+    private void drawCalendar() {
 
-        year.setText(String.valueOf(dateFocus.getYear()));
-        month.setText(String.valueOf(dateFocus.getMonth()));
+            year.setText(String.valueOf(dateFocus.getYear()));
+            month.setText(String.valueOf(dateFocus.getMonth()));
 
-        double calendarWidth = calendar.getPrefWidth();
-        double calendarHeight = calendar.getPrefHeight();
-        double strokeWidth = 1;
-        double spacingH = 1.2;
-        double spacingV = calendar.getVgap();
-        String strDayOfMonth = null;
+            double calendarWidth = calendar.getPrefWidth();
+            double calendarHeight = calendar.getPrefHeight();
+            double strokeWidth = 1;
+            double spacingH = 1.2;
+            double spacingV = calendar.getVgap();
+            String strDayOfMonth = null;
 
-        Map<String, List<Appointment>> calendarAppointmentMap = getCalendarActivitiesMonth(dateFocus);
+            Map<String, List<Appointment>> calendarAppointmentMap = getCalendarActivitiesMonth(dateFocus);
 
-        int monthMaxDate = dateFocus.getMonth().maxLength();
-        //Check for leap year
-        if(dateFocus.getYear() % 4 != 0 && monthMaxDate == 29){
-            monthMaxDate = 28;
-        }
-
-        int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1,0,0,0,0,dateFocus.getZone()).getDayOfWeek().getValue();
-
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
-
-                StackPane stackPane = new StackPane();
-                Rectangle rectangle = new Rectangle();
-                rectangle.setFill(Color.TRANSPARENT);
-                rectangle.setStroke(Color.BLACK);
-                rectangle.setStrokeWidth(strokeWidth);
-                double rectangleWidth = (calendarWidth/7) - strokeWidth - spacingH;
-                rectangle.setWidth(rectangleWidth);
-                double rectangleHeight = (calendarHeight/5.2) - strokeWidth - spacingV;
-                rectangle.setHeight(rectangleHeight);
-                stackPane.getChildren().add(rectangle);
-
-                int calculatedDate = (j+1)+(7*i);
-
-                if(calculatedDate > dateOffset){
-                    int currentDate = calculatedDate - dateOffset;
-                    if(currentDate <= monthMaxDate){
-                        Text date = new Text(String.valueOf(currentDate));
-                        double textTranslationY = - (rectangleHeight / 2) * 0.75;
-                        date.setTranslateY(textTranslationY);
-                        stackPane.getChildren().add(date);
-
-                        if (String.valueOf(currentDate).length()<=1) {
-                            strDayOfMonth = "0" + (String.valueOf(currentDate));
-                        } else {
-                            strDayOfMonth = String.valueOf(currentDate);
-                        }
-
-                        List<Appointment> calendarActivities = calendarAppointmentMap.get(strDayOfMonth);
-                        if(calendarActivities != null) {
-                            createCalendarActivity(calendarActivities, rectangleHeight, rectangleWidth, stackPane);
-                        }
-                    }
-                    if(today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate){
-                        rectangle.setStroke(Color.BLUE);
-                    }
-                }
-                calendar.getChildren().add(stackPane);
+            int monthMaxDate = dateFocus.getMonth().maxLength();
+            //Check for leap year
+            if (dateFocus.getYear() % 4 != 0 && monthMaxDate == 29) {
+                monthMaxDate = 28;
             }
-        }
+
+            int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1, 0, 0, 0, 0, dateFocus.getZone()).getDayOfWeek().getValue();
+
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 7; j++) {
+
+                    StackPane stackPane = new StackPane();
+                    Rectangle rectangle = new Rectangle();
+                    rectangle.setFill(Color.TRANSPARENT);
+                    rectangle.setStroke(Color.BLACK);
+                    rectangle.setStrokeWidth(strokeWidth);
+                    double rectangleWidth = (calendarWidth / 7) - strokeWidth - spacingH;
+                    rectangle.setWidth(rectangleWidth);
+                    double rectangleHeight = (calendarHeight / 5.2) - strokeWidth - spacingV;
+                    rectangle.setHeight(rectangleHeight);
+                    stackPane.getChildren().add(rectangle);
+
+                    int calculatedDate = (j + 1) + (7 * i);
+
+                    if (calculatedDate > dateOffset) {
+                        int currentDate = calculatedDate - dateOffset;
+                        if (currentDate <= monthMaxDate) {
+                            Text date = new Text(String.valueOf(currentDate));
+                            double textTranslationY = -(rectangleHeight / 2) * 0.75;
+                            date.setTranslateY(textTranslationY);
+                            stackPane.getChildren().add(date);
+
+                            if (String.valueOf(currentDate).length() <= 1) {
+                                strDayOfMonth = "0" + (String.valueOf(currentDate));
+                            } else {
+                                strDayOfMonth = String.valueOf(currentDate);
+                            }
+
+
+                            List<Appointment> calendarActivities = calendarAppointmentMap.get(strDayOfMonth);
+
+                            if (calendarActivities != null) {
+                                createCalendarActivity(calendarActivities, rectangleHeight, rectangleWidth, stackPane);
+                            }
+                        }
+                        if (today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate) {
+                            rectangle.setStroke(Color.BLUE);
+                        }
+                    }
+                    calendar.getChildren().add(stackPane);
+                }
+            }
     }
 
 
@@ -157,32 +153,32 @@ public class CalendarExpController implements Initializable {
         int sortedTimes[] = new int[200];
         int testArray[] = new int[200];
 
-        for (int k = 0; k < calendarActivities.size(); k++) {
 
-            if(k >= 2) {
-                Text moreActivities = new Text("  Click for more...");
-                moreActivities.setStyle("-fx-font-size: 10px");
-                moreActivities.setFill(Color.BLUE);
-                calendarExpandBox.getChildren().add(moreActivities);
-                calendarActivityBox.getChildren().add(calendarExpandBox);
-                calendarExpandBox.setOnMouseClicked(mouseEvent -> bubbleSort(calendarActivities));
-                break;
+            for (int k = 0; k < calendarActivities.size(); k++) {
+
+                if (k >= 2) {
+                    Text moreActivities = new Text("  Click for more...");
+                    moreActivities.setStyle("-fx-font-size: 10px");
+                    moreActivities.setFill(Color.BLUE);
+                    calendarExpandBox.getChildren().add(moreActivities);
+                    calendarActivityBox.getChildren().add(calendarExpandBox);
+                    calendarExpandBox.setOnMouseClicked(mouseEvent -> bubbleSort(calendarActivities));
+                    break;
+                }
+
+                Text text = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
+                Text text2 = new Text(calendarActivities.get(k).appTimeProperty());
+                calendarActivityBox.getChildren().add(text);
+                calendarActivityBox.getChildren().add(text2);
             }
 
+            calendarActivityBox.setTranslateY((rectangleHeight / 2) * 0.20);
+            calendarActivityBox.setMaxWidth(rectangleWidth * 0.8);
+            calendarActivityBox.setMaxHeight(rectangleHeight * 0.65);
+            calendarActivityBox.setStyle("-fx-background-color:GRAY; -fx-font-size: 9px");
+            calendarExpandBox.setStyle("-fx-background-color: #ED6918");
+            stackPane.getChildren().add(calendarActivityBox);
 
-            Text text = new Text(getPatientName(calendarActivities.get(k).patUsernameProperty()));
-            Text text2 = new Text(calendarActivities.get(k).appTimeProperty());
-            calendarActivityBox.getChildren().add(text);
-            calendarActivityBox.getChildren().add(text2);
-
-        }
-
-        calendarActivityBox.setTranslateY((rectangleHeight / 2) * 0.20);
-        calendarActivityBox.setMaxWidth(rectangleWidth * 0.8);
-        calendarActivityBox.setMaxHeight(rectangleHeight * 0.65);
-        calendarActivityBox.setStyle("-fx-background-color:GRAY; -fx-font-size: 9px");
-        calendarExpandBox.setStyle("-fx-background-color: #ED6918");
-        stackPane.getChildren().add(calendarActivityBox);
     }
 
     private void bubbleSort(List<Appointment> calendarActivities) {
@@ -213,8 +209,6 @@ public class CalendarExpController implements Initializable {
             }
         }
     }
-
-
 
 
     private void expandActivities (List<Appointment> calendarActivities, int[] timeArray) {

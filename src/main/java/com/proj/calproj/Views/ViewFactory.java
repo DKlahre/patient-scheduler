@@ -98,13 +98,13 @@ public class ViewFactory {
     }
 
     public AnchorPane getCalendarView() {
-        if (calendarView == null){
+//        if (calendarView == null){
             try {
                 calendarView = new FXMLLoader(getClass().getResource("/Fxml/Admin/Calendar.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+//        }
         return calendarView;
     }
 
