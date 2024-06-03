@@ -11,6 +11,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class CreatePatientController implements Initializable {
 
@@ -28,7 +31,6 @@ public class CreatePatientController implements Initializable {
     public TextArea notes_ta;
     public ChoiceBox physician_selector;
     private String username;
-//    private boolean createPatientFlag = false;
     private String assignedPhysician;
     private LocalDate myDate;
     public DatePicker birthDate_pkr;
@@ -36,7 +38,25 @@ public class CreatePatientController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        create_patient_btn.setOnAction(event -> createPatient());
+        ReentrantLock lock = new ReentrantLock();
+        Condition waitCondition = lock.newCondition();
+        create_patient_btn.setOnAction(event -> {
+//            try {
+                createPatient();
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+        });
+        fName_fld.setOnMouseClicked(e -> {
+            error_lbl.setText("");
+        });
+        lName_fld.setOnMouseClicked(e -> {
+            error_lbl.setText("");
+        });
+        gender_fld.setOnMouseClicked(e -> {
+            error_lbl.setText("");
+        });
+
         physician_selector.setItems(FXCollections.observableArrayList(PhysicianOptions.Dr_Milton_Johnson, PhysicianOptions.Dr_Chris_Blake, PhysicianOptions.Dr_Darren_Knight, PhysicianOptions.Dr_Michael_Schlenger, PhysicianOptions.Dr_Sheldon_Redstone, PhysicianOptions.Dr_Janet_Mellon));
         physician_selector.valueProperty().addListener(observable -> setPhysician_selector());
         username_box.selectedProperty().addListener((observableValue, oldVal, newVal) -> {
@@ -45,6 +65,8 @@ public class CreatePatientController implements Initializable {
                 onCreatePatientUsername();
             }
         });
+        physician_selector.valueProperty().set(null);
+
     }
 
     private void setPhysician_selector() {
@@ -76,7 +98,8 @@ public class CreatePatientController implements Initializable {
         }
     }
 
-    private void createPatient() {
+    private void createPatient()  {
+
         String fName = fName_fld.getText();
         String lName = lName_fld.getText();
         String password = password_fld.getText();
@@ -90,11 +113,12 @@ public class CreatePatientController implements Initializable {
         Model.getInstance().setPatients();
         Model.getInstance().getPatients();
         error_lbl.setStyle("-fx-text-fill: blue; -fx-font-size: 1.3em; -fx-font-weight: bold");
-        error_lbl.setText("Patient Created Successfully");
         emptyFields();
+        error_lbl.setText("Patient Created Successfully");
+
     }
 
-    private void emptyFields() {
+    private void emptyFields()  {
         fName_fld.setText("");
         lName_fld.setText("");
         password_fld.setText("");
@@ -104,6 +128,7 @@ public class CreatePatientController implements Initializable {
         username_lbl.setText("");
         notes_ta.setText("");
         username_box.setSelected(false);
+        physician_selector.valueProperty().set(null);
 
     }
 
