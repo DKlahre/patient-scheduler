@@ -169,7 +169,7 @@ public class CalendarExpController implements Initializable {
             calendarActivityBox.setTranslateY((rectangleHeight / 2) * 0.20);
             calendarActivityBox.setMaxWidth(rectangleWidth * 0.8);
             calendarActivityBox.setMaxHeight(rectangleHeight * 0.65);
-            calendarActivityBox.setStyle("-fx-background-color:GRAY; -fx-font-size: 9px");
+            calendarActivityBox.setStyle("-fx-background-color:#FFFF66; -fx-font-size: 9px");
             calendarExpandBox.setStyle("-fx-background-color: #ED6918");
             stackPane.getChildren().add(calendarActivityBox);
 

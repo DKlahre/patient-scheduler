@@ -52,5 +52,42 @@
          </Button>
       </HBox>
    </VBox>
-   <ListView fx:id="patient_listview" layoutX="16.0" layoutY="372.0" prefHeight="186.0" prefWidth="820.0" />
+   <VBox layoutY="373.0" prefHeight="35.0" prefWidth="851.0">
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30;" text="Possible Choices" textAlignment="CENTER" wrappingWidth="850.7123603820801" />
+      </children>
+   </VBox>
+   <HBox layoutX="218.0" layoutY="411.0" prefHeight="35.0" prefWidth="523.0">
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24;" text="Username" wrappingWidth="139.51247024536133" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24;" text="Last Name" wrappingWidth="136.31250762939453" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24;" text="Birth Date" wrappingWidth="132.31249713897705" />
+      </children>
+   </HBox>
+   <HBox layoutX="220.0" layoutY="434.0" prefHeight="68.0" prefWidth="468.0">
+      <children>
+         <VBox prefHeight="68.0" prefWidth="140.0">
+            <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="fGerns19" />
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="bNelson12" />
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="mBenino33" />
+            </children>
+         </VBox>
+         <VBox prefHeight="68.0" prefWidth="136.0">
+            <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ventura" />
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Perone" />
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hawkins" />
+            </children>
+         </VBox>
+         <VBox prefHeight="142.0" prefWidth="172.0">
+            <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="November 2, 1986" />
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="August 5, 1965" />
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="December 19, 1972" />
+            </children>
+         </VBox>
+      </children>
+   </HBox>
+   <ListView fx:id="patient_listview" layoutX="9.0" layoutY="528.0" prefHeight="194.0" prefWidth="832.0" />
 </AnchorPane>
