@@ -42,15 +42,9 @@ public class CalendarExpController implements Initializable {
     int[] lastValueArray = new int[0];
     Integer lastValue;
 
-//    Integer compareNum;
-//    String marker2 = null;
-//    String marker = null;
-//    Boolean processed = false;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Model.getInstance().setApppointments();
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
         addListeners();
@@ -107,7 +101,7 @@ public class CalendarExpController implements Initializable {
                     rectangle.setFill(Color.TRANSPARENT);
                     rectangle.setStroke(Color.BLACK);
                     rectangle.setStrokeWidth(strokeWidth);
-                    double rectangleWidth = (calendarWidth / 7) - strokeWidth - spacingH;
+                    double rectangleWidth = (calendarWidth / 7.6) - strokeWidth - spacingH;
                     rectangle.setWidth(rectangleWidth);
                     double rectangleHeight = (calendarHeight / 5.2) - strokeWidth - spacingV;
                     rectangle.setHeight(rectangleHeight);
