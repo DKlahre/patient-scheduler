@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -52,19 +53,24 @@
          </Button>
       </HBox>
    </VBox>
-   <VBox layoutY="373.0" prefHeight="35.0" prefWidth="851.0">
+   <VBox layoutY="355.0" prefHeight="30.0" prefWidth="851.0">
+      <children>
+         <Label fx:id="error_msg_lbl" alignment="CENTER" prefHeight="26.0" prefWidth="851.0" style="-fx-font-size: 20;" textFill="RED" />
+      </children>
+   </VBox>
+   <VBox layoutY="391.0" prefHeight="42.0" prefWidth="851.0">
       <children>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30;" text="Possible Choices" textAlignment="CENTER" wrappingWidth="850.7123603820801" />
       </children>
    </VBox>
-   <HBox layoutX="218.0" layoutY="411.0" prefHeight="35.0" prefWidth="523.0">
+   <HBox layoutX="218.0" layoutY="433.0" prefHeight="26.0" prefWidth="523.0">
       <children>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24;" text="Username" wrappingWidth="139.51247024536133" />
          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24;" text="Last Name" wrappingWidth="136.31250762939453" />
          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24;" text="Birth Date" wrappingWidth="132.31249713897705" />
       </children>
    </HBox>
-   <HBox layoutX="220.0" layoutY="434.0" prefHeight="68.0" prefWidth="468.0">
+   <HBox layoutX="220.0" layoutY="460.0" prefHeight="60.0" prefWidth="468.0">
       <children>
          <VBox prefHeight="68.0" prefWidth="140.0">
             <children>

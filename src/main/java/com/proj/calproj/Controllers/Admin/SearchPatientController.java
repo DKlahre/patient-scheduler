@@ -5,10 +5,7 @@ import com.proj.calproj.Models.Patient;
 import com.proj.calproj.Views.PatientCellFactory;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -23,6 +20,7 @@ public class SearchPatientController implements Initializable {
     public Button birthDateSearch_btn;
     public ListView<Patient> patient_listview;
     public DatePicker birthDate_pkr;
+    public Label error_msg_lbl;
     private Patient patient;
 
     @Override
@@ -30,28 +28,50 @@ public class SearchPatientController implements Initializable {
         usernameSearch_btn.setOnAction(event -> onUserNameSearch());
         lastNameSearch_btn.setOnAction(event -> onLastNameSearch());
         birthDateSearch_btn.setOnAction(event -> onBirthDateSearch());
+        error_msg_lbl.setText("");
+        username_fld.setOnMouseClicked(e -> {
+            error_msg_lbl.setText("");
+        });
+        lastName_fld.setOnMouseClicked(e -> {
+            error_msg_lbl.setText("");
+        });
+        birthDate_pkr.setOnMouseClicked(e -> {
+            error_msg_lbl.setText("");
+        });
     }
 
     private void onUserNameSearch() {
+        try {
         ObservableList<Patient> searchResults = Model.getInstance().searchPatUsername(username_fld.getText());
         patient_listview.setItems(searchResults);
         patient_listview.setCellFactory(e -> new PatientCellFactory());
         patient = searchResults.get(0);
+        } catch (Exception e) {
+            error_msg_lbl.setText("Patient not found");
+        }
     }
 
     private void onLastNameSearch() {
-        ObservableList<Patient> searchResults = Model.getInstance().searchPatLastName(lastName_fld.getText());
-        patient_listview.setItems(searchResults);
-        patient_listview.setCellFactory(e -> new PatientCellFactory());
-        patient = searchResults.get(0);
+        try {
+            ObservableList<Patient> searchResults = Model.getInstance().searchPatLastName(lastName_fld.getText());
+            patient_listview.setItems(searchResults);
+            patient_listview.setCellFactory(e -> new PatientCellFactory());
+            patient = searchResults.get(0);
+        } catch (Exception e) {
+            error_msg_lbl.setText("Patient not found");
+        }
     }
 
     private void onBirthDateSearch() {
-        LocalDate myDate = birthDate_pkr.getValue();
-        String myFormattedDate = myDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        ObservableList<Patient> searchResults = Model.getInstance().searchPatBirthDate(myFormattedDate);
-        patient_listview.setItems(searchResults);
-        patient_listview.setCellFactory(e -> new PatientCellFactory());
-        patient = searchResults.get(0);
+        try {
+            LocalDate myDate = birthDate_pkr.getValue();
+            String myFormattedDate = myDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            ObservableList<Patient> searchResults = Model.getInstance().searchPatBirthDate(myFormattedDate);
+            patient_listview.setItems(searchResults);
+            patient_listview.setCellFactory(e -> new PatientCellFactory());
+            patient = searchResults.get(0);
+        } catch (Exception e) {
+            error_msg_lbl.setText("Patient not found");
+        }
     }
 }
