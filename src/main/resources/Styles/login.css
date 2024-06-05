@@ -74,3 +74,13 @@
 .error_lbl {
     -fx-text-fill: #FF0000;
 }
+
+#cred_title {
+    -fx-font-size: 16px;
+    -fx-fill: #000000;
+}
+
+.demo_cred_vbox Text{
+    -fx-font-size: 16px;
+    -fx-fill: #000000;
+}

@@ -46,10 +46,10 @@ public class LoginController implements Initializable {
         if (Model.getInstance().getViewFactory().getLoginType() == AccountType.PHYSICIAN) {
             Model.getInstance().evaluatePhysicianCred(username_fld.getText(), password_fld.getText());
             if (Model.getInstance().getPhysicianLoginSuccessFlag()) {
-                Model.getInstance().getViewFactory().showPhysicianWindow();
+                Model.getInstance().getViewFactory().showAdminWindow();
                 Model.getInstance().getViewFactory().closeStage(stage);
             } else {
-                password_fld.setText("");
+                username_fld.setText("");
                 password_fld.setText("");
                 error_lbl.setText("No such login credentials");
             }
@@ -57,9 +57,16 @@ public class LoginController implements Initializable {
             Model.getInstance().evaluateAdminCred(username_fld.getText(), password_fld.getText());
             if (Model.getInstance().getAdminLoginSuccessFlag()) {
                 Model.getInstance().getViewFactory().showAdminWindow();
-
                 Model.getInstance().getViewFactory().closeStage(stage);
+            } else {
+                username_fld.setText("");
+                password_fld.setText("");
+                error_lbl.setText("No such login credentials");
             }
+
+
+
+
         }
 
     }
