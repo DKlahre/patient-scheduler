@@ -41,11 +41,7 @@ public class CreatePatientController implements Initializable {
         ReentrantLock lock = new ReentrantLock();
         Condition waitCondition = lock.newCondition();
         create_patient_btn.setOnAction(event -> {
-//            try {
                 createPatient();
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
         });
         fName_fld.setOnMouseClicked(e -> {
             error_lbl.setText("");

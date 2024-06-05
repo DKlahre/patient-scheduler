@@ -63,12 +63,7 @@ public class LoginController implements Initializable {
                 password_fld.setText("");
                 error_lbl.setText("No such login credentials");
             }
-
-
-
-
         }
-
     }
 }
 

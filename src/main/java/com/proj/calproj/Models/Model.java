@@ -75,7 +75,6 @@ public class Model {
         }
     }
 
-
     public void setApppointments(){
         ResultSet resultSet = databaseDriver.getAllAppointmentsData();
         try {
@@ -93,8 +92,6 @@ public class Model {
             e.printStackTrace();
         }
     }
-
-
 
 
     public void clearPatientsList(){

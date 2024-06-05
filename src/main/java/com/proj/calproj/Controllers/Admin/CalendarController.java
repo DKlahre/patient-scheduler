@@ -46,7 +46,6 @@ public class CalendarController implements Initializable {
   public TableColumn notes_col;
   public TableView patientTableView;
   private  Patient patient;
-//  private String hey;
 
 
   @Override
@@ -63,7 +62,6 @@ public class CalendarController implements Initializable {
     notes_col.setCellValueFactory(new PropertyValueFactory<>("notes"));
     notes_col.setCellFactory(TextFieldTableCell.forTableColumn());
 
-    try {
       notes_col.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Patient, String>>() {
         @Override
         public void handle(TableColumn.CellEditEvent<Patient, String> cellEditEvent) {
@@ -73,10 +71,6 @@ public class CalendarController implements Initializable {
 
         }
       });
-    } catch(Exception e) {
-      System.out.println("Inside setOnEditCommit() ");
-    }
-
   }
 
   private void initPatientsList() {
