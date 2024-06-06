@@ -6,5 +6,6 @@ public enum AdminMenuOptions {
     SEARCH_PATIENT,
     PATIENTS,
     CALENDAR,
-    CALENDAREXP
+    CALENDAREXP,
+    LOGOUT
 }

@@ -3,7 +3,6 @@ package com.proj.calproj.Controllers.Admin;
 import com.proj.calproj.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 

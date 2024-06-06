@@ -4,6 +4,7 @@ import com.proj.calproj.Models.Model;
 import com.proj.calproj.Views.AdminMenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,6 +29,7 @@ public class AdminMenuController implements Initializable {
         calendar_btn.setOnAction(event -> onCalendar());
         calendarExp_btn.setOnAction(event -> onCalendarExp());
         patients_btn.setOnAction(event -> onPatients());
+        logout_btn.setOnAction(event -> onLogout());
     }
 
     private void onCreatePatient() {
@@ -51,6 +53,7 @@ public class AdminMenuController implements Initializable {
     }
 
     private void onLogout() {
+        Stage stage = (Stage) logout_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
     }
 
