@@ -16,6 +16,7 @@ public class PatientsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initPatientsList();
         patients_listview.setItems(Model.getInstance().getPatients());
+        patients_listview.setFocusTraversable(false);
         patients_listview.setCellFactory(e -> new PatientCellFactory());
     }
 

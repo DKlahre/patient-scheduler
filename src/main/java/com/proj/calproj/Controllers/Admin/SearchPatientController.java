@@ -25,6 +25,7 @@ public class SearchPatientController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//         ListView<Patient> patient_listview;
         usernameSearch_btn.setOnAction(event -> onUserNameSearch());
         lastNameSearch_btn.setOnAction(event -> onLastNameSearch());
         birthDateSearch_btn.setOnAction(event -> onBirthDateSearch());
@@ -44,6 +45,7 @@ public class SearchPatientController implements Initializable {
         try {
         ObservableList<Patient> searchResults = Model.getInstance().searchPatUsername(username_fld.getText());
         patient_listview.setItems(searchResults);
+        patient_listview.setFocusTraversable(false);
         patient_listview.setCellFactory(e -> new PatientCellFactory());
         patient = searchResults.get(0);
         } catch (Exception e) {
@@ -55,6 +57,7 @@ public class SearchPatientController implements Initializable {
         try {
             ObservableList<Patient> searchResults = Model.getInstance().searchPatLastName(lastName_fld.getText());
             patient_listview.setItems(searchResults);
+            patient_listview.setFocusTraversable(false);
             patient_listview.setCellFactory(e -> new PatientCellFactory());
             patient = searchResults.get(0);
         } catch (Exception e) {
@@ -68,6 +71,7 @@ public class SearchPatientController implements Initializable {
             String myFormattedDate = myDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             ObservableList<Patient> searchResults = Model.getInstance().searchPatBirthDate(myFormattedDate);
             patient_listview.setItems(searchResults);
+            patient_listview.setFocusTraversable(false);
             patient_listview.setCellFactory(e -> new PatientCellFactory());
             patient = searchResults.get(0);
         } catch (Exception e) {
