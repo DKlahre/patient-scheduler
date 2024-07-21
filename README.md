@@ -3,7 +3,7 @@ Using JavaFX and SQLite, the Otolaryngology Patient Scheduler gives hospital</br
 administrators and physicians the ability to track patient appointments.</br> 
 Information can be searched and edited on the fly. Patient data is presented</br> 
 with a calendar GUI as well as listview and tableview formats. Special attention</br> 
-was given to proper coding architecture that is unique to JavaFX programming.</br></H4>
+was given to proper coding architecture that is unique to JavaFX programming.</H4>
 
 
 <H4>Build Specs:</br>
